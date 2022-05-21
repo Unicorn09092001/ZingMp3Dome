@@ -1,0 +1,55 @@
+.header__playlist {
+    .container__header-btn.button {
+        margin: 20px auto;
+    }
+}
+
+.header__playlist-thumbnail {
+    width: 100%;
+}
+
+.playlist-infor {
+    padding: 15px 0 0;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.playlist-title{
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.playlist-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .option-btn {
+        padding: 9px 11px;
+        margin-right: 10px;
+        background-color:  var(--bg-content-color);
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    }
+    .action-btn {
+        background-color:  var(--bg-content-color);
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    }
+}
+
+.container__playlistPage {
+    margin-left: 30px;
+    .container__playlist-discription {
+        line-height: 1.8rem;
+        font-size: 1.4rem;
+        color: var(--text-color);
+        span {
+            color: var(--text-secondary);
+        }
+    }
+}
