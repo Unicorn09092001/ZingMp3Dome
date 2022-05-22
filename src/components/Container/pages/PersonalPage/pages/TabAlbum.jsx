@@ -2,8 +2,7 @@ import AlbumList from "features/Album/components/AlbumList/AlbumList";
 import React from "react";
 import { useSelector } from "react-redux";
 
-function TabAlbum(props) {
-  const albumList = useSelector((state) => state.personalAlbum.list);
+function TabAlbum({ albumList = [] }) {
   return (
     <div className="grid container__tab tab-album">
       <div className="container__section row">
@@ -14,9 +13,18 @@ function TabAlbum(props) {
             </div>
           </div>
         </div>
-        <div className="col l-12 m-12 c-12">
-          <AlbumList albumList={albumList} optionalClass="mb-30" />
-        </div>
+        {albumList.length === 0 ? (
+          <div className="col l-12 m-12 c-12">
+            <div className="box--no-content">
+              <div className="no-content-image--album"></div>
+              <span className="no-content-text">Danh sách Album trống</span>
+            </div>
+          </div>
+        ) : (
+          <div className="col l-12 m-12 c-12">
+            <AlbumList albumList={albumList} optionalClass="mb-30" />
+          </div>
+        )}
       </div>
     </div>
   );

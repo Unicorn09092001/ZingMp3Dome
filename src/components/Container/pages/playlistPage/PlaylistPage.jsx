@@ -11,6 +11,7 @@ import HeartButton from "components/IconButton/HeartButton/HeartButton";
 import Artist from "features/Artist/Artist";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import LoadingAnimate from "components/Container/components/LoadingAnimate/LoadingAnimate";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
 
 function PlaylistPage() {
   const dispatch = useDispatch();
@@ -86,6 +87,9 @@ function PlaylistPage() {
                             <NavLink
                               to={"/artist/name=" + artist.alias}
                               className="is-ghost"
+                              onClick={() => {
+                                dispatch(setArtistAlias(artist.alias));
+                              }}
                             >
                               {artist.name}
                             </NavLink>

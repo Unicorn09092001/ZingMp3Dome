@@ -838,6 +838,20 @@ a {
 		center center / contain;
 	margin-bottom: 20px;
 }
+.no-content-image--album{
+	width: 90px;
+	height: 90px;
+	background: url('https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.6.27/static/media/dics-music-icon.3925fc01.svg') no-repeat
+		center center / contain;
+	margin-bottom: 20px;
+}
+.no-content-image--mv {
+	width: 90px;
+	height: 90px;
+	background: url('https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.6.27/static/media/video-icon.09654360.svg') no-repeat
+		center center / contain;
+	margin-bottom: 20px;
+}
 
 .no-content-text {
 	font-size: 1.6rem;

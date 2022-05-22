@@ -10,8 +10,10 @@ function Mv({
   sectionName = "",
   noWrap = false,
   navigable = false,
+  pathName = "",
+  mvList = [],
 }) {
-  const mvList = useSelector((state) => state.personalMv.list);
+  //const mvList = useSelector((state) => state.personalMv.list);
   const [slideIndex, setSlideIndex] = useState(0);
   const [step] = useState(3);
 
@@ -37,6 +39,7 @@ function Mv({
           step={step}
           noWrap={noWrap}
           navigable={navigable}
+          pathName={pathName}
         />
       </div>
       <div className="col l-12 m-12 c-12">

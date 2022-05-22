@@ -12,6 +12,9 @@ function TabHome() {
   const dispatch = useDispatch();
   const playlistList = useSelector((state) => state.personalPlaylist.list);
   const artistList = useSelector((state) => state.personalArtist.list);
+  const favoriteSongs = useSelector((state) => state.favoriteSongs.songList);
+  const favoriteAlbums = useSelector((state) => state.personalAlbum.list);
+  const mvList = useSelector((state) => state.personalMv.list);
 
   useEffect(() => {
     getFavoriteArtists().then((res) => {
@@ -21,7 +24,12 @@ function TabHome() {
 
   return (
     <div className="grid container__tab tab-home">
-      <PlayMusic />
+      <PlayMusic
+        playMusicList={favoriteSongs}
+        sectionName="Bài Hát"
+        navigable
+        pathName="songs"
+      />
 
       <Playlist
         playlistList={playlistList}
@@ -29,11 +37,26 @@ function TabHome() {
         noWrap
         sectionName="Playlist"
         navigable
+        pathName="playlists"
       />
 
-      <Album optionalClass={"mt-50"} noWrap sectionName="Album" navigable />
+      <Album
+        optionalClass={"mt-50"}
+        noWrap
+        sectionName="Album"
+        navigable
+        pathName="albums"
+        albumList={favoriteAlbums}
+      />
 
-      <Mv optionalClass={"mt-50"} noWrap sectionName="MV" navigable />
+      <Mv
+        optionalClass={"mt-50"}
+        noWrap
+        sectionName="MV"
+        navigable
+        pathName="mvs"
+        mvList={mvList}
+      />
 
       <Artist
         optionalClass={"mt-30"}
@@ -41,6 +64,7 @@ function TabHome() {
         sectionName="Artist"
         navigable
         artistList={artistList}
+        pathName="artists"
       />
     </div>
   );

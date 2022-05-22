@@ -10,9 +10,12 @@ import {
   getSongDataCurrent,
   songLoading,
   getSongPath,
+  setIsFavorite,
 } from "Slice/songCurrentDataSlice";
 import { getPlaySongCurrentInfo } from "Slice/playSongCurrentInfoSlice";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
 import { getSongById } from "app/services";
+import { NavLink } from "react-router-dom";
 
 function SongItem({
   song = [],
@@ -47,6 +50,7 @@ function SongItem({
   const favoriteSongs = useSelector((state) => state.favoriteSongs.songList);
 
   const handlePlay = (song) => {
+    dispatch(setIsFavorite(false));
     if (song.encodeId === enCodeIDSong) {
       dispatch(
         getSongDataCurrent({
@@ -154,9 +158,15 @@ function SongItem({
           <p className="playlist__song-author info__author">
             {artists?.map((artist, index) => (
               <React.Fragment key={artist.id}>
-                <a href="/" className="is-ghost">
+                <NavLink
+                  to={"/artist/name=" + artist.alias}
+                  className="is-ghost"
+                  onClick={() => {
+                    dispatch(setArtistAlias(artist.alias));
+                  }}
+                >
                   {artist.name}
-                </a>
+                </NavLink>
                 {index < artists.length - 1 && ", "}
               </React.Fragment>
             ))}

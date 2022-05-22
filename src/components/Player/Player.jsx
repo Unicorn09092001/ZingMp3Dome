@@ -1,18 +1,31 @@
 import clsx from "clsx";
 import PlayerMusic from "features/PlayerMusic/PlayerMusic";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { currentThemeSelector } from "selectors/themeSelector";
 import PlayerPopup from "./components/PlayerPopup/PlayerPopup";
 import "./Player.scss";
 import { PlayerProvider } from "./PlayerStore";
+import { setIsFavorite } from "Slice/songCurrentDataSlice";
 
 Player.propTypes = {};
 
 function Player() {
+  const dispatch = useDispatch();
   const [openPopup, setOpenPopup] = useState(false);
-  const { isPlaying } = useSelector((state) => state.songCurrentData);
+  const { isPlaying, isFavorite, enCodeIDSong } = useSelector(
+    (state) => state.songCurrentData
+  );
   const currentTheme = useSelector(currentThemeSelector);
+  const favoriteSongList = useSelector((state) => state.favoriteSongs.songList);
+
+  useEffect(() => {
+    favoriteSongList.forEach((favoriteSong) => {
+      if (favoriteSong.encodeId === enCodeIDSong) {
+        dispatch(setIsFavorite(true));
+      }
+    });
+  }, [enCodeIDSong]);
 
   const handleOpenPopup = (e) => {
     const authorNode = e.target.closest(

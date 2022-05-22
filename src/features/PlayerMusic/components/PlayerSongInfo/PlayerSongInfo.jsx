@@ -3,17 +3,21 @@ import HeartButton from "components/IconButton/HeartButton/HeartButton";
 import React, { useMemo, useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./PlayerSongInfo.scss";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
 
 function PlayerSongInfo({ currentSong = {}, isPopupSection }) {
   const { title, thumbnail, artists } = currentSong;
   const [titleWidth, setTitleWidth] = useState(0);
-  const titleAnimateRef = useRef();
-  const { isPlaying } = useSelector((state) => state.songCurrentData);
 
-  let isFavoriteSong = false;
-  const favoriteSongs = useSelector((state) => state.favoriteSongs.songList);
+  const titleAnimateRef = useRef();
+  const dispatch = useDispatch();
+
+  const { isPlaying, isFavorite } = useSelector(
+    (state) => state.songCurrentData
+  );
 
   useEffect(() => {
     const titleRect = titleAnimateRef.current.getBoundingClientRect();
@@ -35,6 +39,7 @@ function PlayerSongInfo({ currentSong = {}, isPopupSection }) {
     titleAnimate?.pause();
     return titleAnimate;
   }, [titleWidth]);
+
   useEffect(() => {
     if (isPlaying) {
       titleAnimate?.play();
@@ -104,9 +109,15 @@ function PlayerSongInfo({ currentSong = {}, isPopupSection }) {
             <div className="player__song-author info__author">
               {artists?.map((artist, index) => (
                 <React.Fragment key={artist.alias}>
-                  <a href="/" className="is-ghost">
+                  <NavLink
+                    to={"/artist/name=" + artist.alias}
+                    className="is-ghost"
+                    onClick={() => {
+                      dispatch(setArtistAlias(artist.alias));
+                    }}
+                  >
                     {artist.name}
-                  </a>
+                  </NavLink>
                   {index < artists.length - 1 && ", "}
                 </React.Fragment>
               ))}
@@ -115,36 +126,20 @@ function PlayerSongInfo({ currentSong = {}, isPopupSection }) {
         </div>
         <div className="media__right hide-on-tablet-mobile">
           <div className="player__song-options">
-            {favoriteSongs.map((favoriteSong, index) => {
-              let renderContent = "";
-              if (favoriteSong.encodeId === currentSong.encodeId) {
-                isFavoriteSong = true;
-                renderContent = (
-                  <HeartButton
-                    key={favoriteSong.encodeId}
-                    primary
-                    hideOnMobile
-                    optionalClass="option-btn"
-                    songInfo={currentSong}
-                  />
-                );
-              }
-              if (index === favoriteSongs.length - 1) {
-                if (isFavoriteSong) {
-                  isFavoriteSong = false;
-                } else {
-                  renderContent = (
-                    <HeartButton
-                      key={favoriteSong.encodeId}
-                      hideOnMobile
-                      optionalClass="option-btn"
-                      songInfo={currentSong}
-                    />
-                  );
-                }
-              }
-              return renderContent;
-            })}
+            {isFavorite ? (
+              <HeartButton
+                primary
+                hideOnMobile
+                optionalClass="option-btn"
+                songInfo={currentSong}
+              />
+            ) : (
+              <HeartButton
+                hideOnMobile
+                optionalClass="option-btn"
+                songInfo={currentSong}
+              />
+            )}
             <div className="player__song-btn option-btn">
               <i className="btn--icon bi bi-three-dots"></i>
             </div>

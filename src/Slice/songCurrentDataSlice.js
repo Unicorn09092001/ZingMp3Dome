@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "@testing-library/react";
 
 var songCurrentList = [
   {
@@ -110,6 +111,7 @@ const songCurrentDataSlice = createSlice({
     songPath: null,
     isPlaying: false,
     isLoading: true,
+    isFavorite: false,
   },
   reducers: {
     getSongDataCurrent: (state, action) => {
@@ -131,6 +133,9 @@ const songCurrentDataSlice = createSlice({
     songLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+    setIsFavorite: (state, action) => {
+      state.isFavorite = action.payload;
+    },
   },
 });
 
@@ -141,6 +146,7 @@ const {
     setSongPlaying,
     getSongPath,
     songLoading,
+    setIsFavorite,
   },
   reducer,
 } = songCurrentDataSlice;
@@ -151,6 +157,7 @@ export {
   setSongPlaying,
   songLoading,
   getSongPath,
+  setIsFavorite,
 };
 
 export default reducer;

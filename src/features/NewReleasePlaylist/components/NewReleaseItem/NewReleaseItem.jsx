@@ -1,8 +1,12 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
 
 function NewReleaseItem({ newReleasePlaylist = {}, itemIndex }, ref) {
   const { thumbnailM, title, artists } = newReleasePlaylist;
   const itemRef = useRef();
+  const dispatch = useDispatch();
 
   useImperativeHandle(ref, () => ({
     getWidth() {
@@ -34,9 +38,15 @@ function NewReleaseItem({ newReleasePlaylist = {}, itemIndex }, ref) {
           <h3 className="row__info-creator">
             {artists.map((artist, index) => (
               <React.Fragment key={index}>
-                <a href="/" className="is-ghost">
+                <NavLink
+                  to={"/artist/name=" + artist.alias}
+                  className="is-ghost"
+                  onClick={() => {
+                    dispatch(setArtistAlias(artist.alias));
+                  }}
+                >
                   {artist.name}
-                </a>
+                </NavLink>
                 {index < artists.length - 1 && ","}
               </React.Fragment>
             ))}

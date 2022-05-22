@@ -9,6 +9,7 @@ import {
   updateFavoritePlaylists,
   removeFavoritePlaylist,
 } from "app/services";
+import { useSelector } from "react-redux";
 
 function HeartButton({
   primary: isPrimary = false,
@@ -17,6 +18,7 @@ function HeartButton({
   songInfo,
   playlistInfo,
 }) {
+  const { isFavorite } = useSelector((state) => state.songCurrentData);
   const [primary, setPrimary] = useState(isPrimary);
   const heartIcon = useMemo(
     () => (primary ? "bi-heart-fill" : "bi-heart"),

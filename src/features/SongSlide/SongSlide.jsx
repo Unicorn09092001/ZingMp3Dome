@@ -4,9 +4,9 @@ import { currentListSongSelector } from "selectors/ListSongSelector";
 import SliderList from "./components/SlideList/SliderList";
 import "./SongSlide.scss";
 
-function SongSlide() {
+function SongSlide({ listSong = [] }) {
   //const listSong = useSelector(currentListSongSelector);
-  const listSong = useSelector((state) => state.favoriteSongs.songList);
+  //const listSong = useSelector((state) => state.favoriteSongs.songList);
 
   const listSongSlide = useMemo(() => {
     if (!listSong) {

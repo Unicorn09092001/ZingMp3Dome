@@ -3,9 +3,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { currentListSongSelector } from "selectors/ListSongSelector";
 
-function TabSong() {
+function TabSong({ listSong = [] }) {
   //const listSong = useSelector(currentListSongSelector);
-  const listSong = useSelector((state) => state.favoriteSongs.songList);
+  // const listSong = useSelector((state) => state.favoriteSongs.songList);
 
   return (
     <div className="grid container__tab tab-song mb-30">

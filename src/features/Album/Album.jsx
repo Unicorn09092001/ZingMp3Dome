@@ -10,8 +10,10 @@ function Album({
   sectionName = "",
   noWrap = false,
   navigable = false,
+  pathName = "",
+  albumList = [],
 }) {
-  const albumList = useSelector((state) => state.personalAlbum.list);
+  //const albumList = useSelector((state) => state.personalAlbum.list);
   const [slideIndex, setSlideIndex] = useState(0);
   const [step] = useState(5);
 
@@ -37,6 +39,7 @@ function Album({
           step={step}
           noWrap={noWrap}
           navigable={navigable}
+          pathName={pathName}
         />
       </div>
       <div className="col l-12 m-12 c-12">

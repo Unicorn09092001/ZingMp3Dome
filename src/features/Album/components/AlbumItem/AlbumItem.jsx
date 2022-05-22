@@ -3,7 +3,7 @@ import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import { useSelector } from "react-redux";
 
 function AlbumItem({ album }, ref) {
-  const { name, image } = album;
+  const { title, thumbnail, releaseDateText } = album;
   const itemRef = useRef();
 
   let isFavoritePlaylist = false;
@@ -23,7 +23,7 @@ function AlbumItem({ album }, ref) {
           <div
             className="row__item-img img--square"
             style={{
-              background: `url('${image}') no-repeat center center / cover`,
+              background: `url('${thumbnail}') no-repeat center center / cover`,
             }}
           ></div>
           <div className="row__item-actions">
@@ -70,8 +70,13 @@ function AlbumItem({ album }, ref) {
         </div>
         <div className="row__item-info">
           <a href="/" className="row__info-name is-twoline">
-            {name}
+            {title}
           </a>
+          {releaseDateText?.length > 0 && (
+            <h3 className="row__info-creator" style={{ fontSize: "1.4rem" }}>
+              {releaseDateText}
+            </h3>
+          )}
         </div>
       </div>
     </div>

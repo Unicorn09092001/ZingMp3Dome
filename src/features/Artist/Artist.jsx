@@ -8,6 +8,7 @@ import ArtistList from "./components/ArtistList/ArtistList";
 function Artist({
   optionalClass,
   sectionName = "",
+  pathName = "",
   noWrap = false,
   navigable = false,
   artistList = [],
@@ -38,6 +39,7 @@ function Artist({
           step={step}
           noWrap={noWrap}
           navigable={navigable}
+          pathName={pathName}
         />
       </div>
       <div className="col l-12 m-12 c-12">

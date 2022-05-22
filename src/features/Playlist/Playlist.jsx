@@ -14,9 +14,12 @@ function Playlist({
   noWrap,
   sectionName = "",
   navigable = false,
+  pathName = "",
+  playlistList = [],
+  hasCreateItem = false,
 }) {
   const dispatch = useDispatch();
-  const playlistList = useSelector((state) => state.personalPlaylist.list);
+  //const playlistList = useSelector((state) => state.personalPlaylist.list);
   const allPlaylistList = useSelector((state) => state.listSong.list);
   const [slideIndex, setSlideIndex] = useState(0);
   const [step, setStep] = useState(5);
@@ -81,6 +84,7 @@ function Playlist({
           sectionName={sectionName}
           step={step}
           navigable={navigable}
+          pathName={pathName}
         />
       </div>
       <div className="col l-12 m-12 c-12">
@@ -89,7 +93,7 @@ function Playlist({
           slideIndex={slideIndex}
           step={step}
           noWrap={noWrap}
-          hasCreateItem
+          hasCreateItem={hasCreateItem}
           // onChangePlaylist={handleChangePlaylist}
         />
       </div>

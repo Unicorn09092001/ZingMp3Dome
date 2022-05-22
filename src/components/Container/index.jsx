@@ -17,18 +17,24 @@ import RadioPage from "./pages/RadioPage/RadioPage";
 import NewReleasePage from "./pages/NewReleasePage/NewReleasePage";
 import Top100Page from "./pages/top100Page/Top100Page";
 import PlaylistPage from "./pages/playlistPage/PlaylistPage";
+import ArtistPage from "./pages/ArtistPage/ArtistPage";
+import TabHomeArtist from "./pages/ArtistPage/tabs/tabHomeArtist";
 
 function Container() {
   const playlistId = useSelector((state) => state.playlistCurrent.encodeId);
+  const artistData = useSelector((state) => state.artistPageData);
+  const listSong = useSelector((state) => state.favoriteSongs.songList);
+  const albumList = useSelector((state) => state.personalAlbum.list);
+  const mvList = useSelector((state) => state.personalMv.list);
 
   return (
     <Routes>
       <Route path="personal/" element={<PersonalPage />}>
         <Route path="" element={<TabHome />} />
-        <Route path="songs" element={<TabSong />} />
+        <Route path="songs" element={<TabSong listSong={listSong} />} />
         <Route path="playlists" element={<TabPlaylist />} />
-        <Route path="albums" element={<TabAlbum />} />
-        <Route path="mvs" element={<TabMv />} />
+        <Route path="albums" element={<TabAlbum albumList={albumList} />} />
+        <Route path="mvs" element={<TabMv mvList={mvList} />} />
         <Route path="artists" element={<TabArtist />} />
         <Route path="upload" element={<TabUpload />} />
       </Route>
@@ -41,6 +47,41 @@ function Container() {
       <Route path="top100" element={<Top100Page />} />
       <Route path="the-loai-video" />
       <Route path={"playlist/id=" + playlistId} element={<PlaylistPage />} />
+      <Route
+        path={"/artist/name=" + artistData.alias + "/"}
+        element={<ArtistPage />}
+      >
+        <Route path="" element={<TabHomeArtist />} />
+        <Route path="feed" />
+        <Route path="event" />
+        {artistData.sections.map((section) => {
+          return section.title === "Bài hát nổi bật" ? (
+            <Route
+              path="songs"
+              element={<TabSong listSong={section.items} />}
+            />
+          ) : section.title === "Single & EP" ? (
+            <Route
+              path="single"
+              element={
+                <TabAlbum
+                  albumList={section.items}
+                  sectionName={section.title}
+                />
+              }
+            />
+          ) : section.title === "Album" ? (
+            <Route
+              path="album"
+              element={<TabAlbum albumList={section.items} />}
+            />
+          ) : section.title === "MV" ? (
+            <Route path="video" element={<TabMv mvList={section.items} />} />
+          ) : null;
+        })}
+        <Route path="album" element={<TabAlbum />} />
+        <Route path="video" element={<TabMv />} />
+      </Route>
     </Routes>
   );
 }

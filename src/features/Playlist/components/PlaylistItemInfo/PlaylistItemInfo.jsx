@@ -1,6 +1,11 @@
 import clsx from "clsx";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
+import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
+
 function PlaylistItemInfo({ playlist }) {
   const {
     title = "",
@@ -9,6 +14,9 @@ function PlaylistItemInfo({ playlist }) {
     description = "",
     type = "",
   } = playlist;
+
+  const dispatch = useDispatch();
+
   return (
     <div
       className={clsx("row__item-info", {
@@ -17,12 +25,16 @@ function PlaylistItemInfo({ playlist }) {
     >
       {!!title && (
         <NavLink
-          to={"playlist/id=" + playlist.encodeId}
+          to={"/playlist/id=" + playlist.encodeId}
           className={clsx("row__info-name", {
             "is-oneline": artists.length > 0 || description.length > 0,
             "is-twoline":
               creator.length > 0 || type === "BXH" || type === "podcast",
           })}
+          onClick={() => {
+            dispatch(setIsLoadingTab(true));
+            dispatch(setPlaylistCurrent(playlist.encodeId));
+          }}
         >
           {title}
         </NavLink>
@@ -32,7 +44,13 @@ function PlaylistItemInfo({ playlist }) {
         <p className="info__artist">
           {artists.map((artist, index) => (
             <React.Fragment key={index}>
-              <NavLink to="abc" className="is-ghost">
+              <NavLink
+                to={"/artist/name=" + artist.alias}
+                className="is-ghost"
+                onClick={() => {
+                  dispatch(setArtistAlias(artist.alias));
+                }}
+              >
                 {artist.name}
               </NavLink>
               {index < artists.length - 1 && ", "}

@@ -3,11 +3,13 @@ import axios from "axios";
 const API_CHART_PAGE = "https://music-player-pink.vercel.app/api/chart-home";
 
 const API_NEW_RELEASE_PAGE =
-  "https://music-player-pink.vercel.app/api/playlist?id=ZWZB969E";
+  "https://music-player-pink.vercel.app/api/playlist?id=ZABDOABU";
 
 const API_PATH_SONG = "https://music-player-pink.vercel.app/api/song?id=";
 
 const API_SONG_INFO = "https://music-player-pink.vercel.app/api/info?id=";
+
+const API_ARTIST_PAGE = "https://music-player-pink.vercel.app/api/artist?name=";
 
 const API_EXPLORE_PAGE = "https://music-player-pink.vercel.app/api/home?page=";
 
@@ -45,6 +47,11 @@ export const getPlaylistById = (encodeId) => {
 
 export const getSongInfoById = (encodeId) => {
   var url = API_SONG_INFO + encodeId;
+  return axios.get(url);
+};
+
+export const getApiArtistPage = (alias) => {
+  var url = API_ARTIST_PAGE + alias;
   return axios.get(url);
 };
 

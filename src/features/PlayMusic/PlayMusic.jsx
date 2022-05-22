@@ -7,7 +7,12 @@ import { currentListSongSelector } from "selectors/ListSongSelector";
 import SongList from "./components/SongList/SongList";
 import "./PlayMusic.scss";
 
-function PlayMusic() {
+function PlayMusic({
+  playMusicList = [],
+  sectionName = "",
+  pathName = "",
+  isArtistPage = false,
+}) {
   //const listSong = useSelector(currentListSongSelector);
   const favoriteSongs = useSelector((state) => state.favoriteSongs);
 
@@ -41,13 +46,18 @@ function PlayMusic() {
   return (
     <div className="container__control row">
       <div className="col l-12 m-12 c-12 mb-10">
-        <ContainerPlayMusicHeader />
+        <ContainerPlayMusicHeader
+          sectionName={sectionName}
+          navigable
+          pathName={pathName}
+          isArtistPage={isArtistPage}
+        />
       </div>
       <div className="col l-12 m-12 c-12">
         <div className="container__playmusic">
-          {device !== "mobile" && <SongSlide />}
+          {device !== "mobile" && <SongSlide listSong={playMusicList} />}
           <div className="container__playlist">
-            <SongList listSong={favoriteSongs.songList} isSongTab />
+            <SongList listSong={playMusicList} isSongTab />
           </div>
         </div>
       </div>
