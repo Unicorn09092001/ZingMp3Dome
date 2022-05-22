@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Unicorn09092001/ZingMp3Dome/static/css/main.ebd35387.chunk.css",
+    "main.js": "/Unicorn09092001/ZingMp3Dome/static/js/main.14368b6a.chunk.js",
+    "main.js.map": "/Unicorn09092001/ZingMp3Dome/static/js/main.14368b6a.chunk.js.map",
+    "runtime-main.js": "/Unicorn09092001/ZingMp3Dome/static/js/runtime-main.3266f9ff.js",
+    "runtime-main.js.map": "/Unicorn09092001/ZingMp3Dome/static/js/runtime-main.3266f9ff.js.map",
+    "static/css/2.8a62c8ba.chunk.css": "/Unicorn09092001/ZingMp3Dome/static/css/2.8a62c8ba.chunk.css",
+    "static/js/2.0b98d653.chunk.js": "/Unicorn09092001/ZingMp3Dome/static/js/2.0b98d653.chunk.js",
+    "static/js/2.0b98d653.chunk.js.map": "/Unicorn09092001/ZingMp3Dome/static/js/2.0b98d653.chunk.js.map",
+    "static/js/3.38be2ab2.chunk.js": "/Unicorn09092001/ZingMp3Dome/static/js/3.38be2ab2.chunk.js",
+    "static/js/3.38be2ab2.chunk.js.map": "/Unicorn09092001/ZingMp3Dome/static/js/3.38be2ab2.chunk.js.map",
+    "index.html": "/Unicorn09092001/ZingMp3Dome/index.html",
+    "static/css/2.8a62c8ba.chunk.css.map": "/Unicorn09092001/ZingMp3Dome/static/css/2.8a62c8ba.chunk.css.map",
+    "static/css/main.ebd35387.chunk.css.map": "/Unicorn09092001/ZingMp3Dome/static/css/main.ebd35387.chunk.css.map",
+    "static/js/2.0b98d653.chunk.js.LICENSE.txt": "/Unicorn09092001/ZingMp3Dome/static/js/2.0b98d653.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/Unicorn09092001/ZingMp3Dome/static/media/bootstrap-icons.38c4d249.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3266f9ff.js",
+    "static/css/2.8a62c8ba.chunk.css",
+    "static/js/2.0b98d653.chunk.js",
+    "static/css/main.ebd35387.chunk.css",
+    "static/js/main.14368b6a.chunk.js"
+  ]
+}
