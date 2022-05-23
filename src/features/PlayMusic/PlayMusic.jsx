@@ -2,8 +2,8 @@ import ContainerPlayMusicHeader from "components/Container/components/ContainerP
 import SongSlide from "features/SongSlide/SongSlide";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { currentListSongSelector } from "selectors/ListSongSelector";
+//import { useSelector } from "react-redux";
+//import { currentListSongSelector } from "selectors/ListSongSelector";
 import SongList from "./components/SongList/SongList";
 import "./PlayMusic.scss";
 
@@ -14,7 +14,7 @@ function PlayMusic({
   isArtistPage = false,
 }) {
   //const listSong = useSelector(currentListSongSelector);
-  const favoriteSongs = useSelector((state) => state.favoriteSongs);
+  //const favoriteSongs = useSelector((state) => state.favoriteSongs);
 
   const [device, setDevice] = useState(() => {
     const windowWidth = window.innerWidth;

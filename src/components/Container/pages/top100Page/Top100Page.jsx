@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./top100Page.scss";
 import { getApiTop100Page } from "app/services";
 import { getPlaylistTop100 } from "Slice/playlistTop100Slice";
-import { NavLink } from "react-router-dom";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import LoadingAnimate from "components/Container/components/LoadingAnimate/LoadingAnimate";
 

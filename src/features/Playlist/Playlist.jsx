@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import ContainerHeader from "components/Container/components/ContainerHeader/ContainerHeader";
-import { toggleLoadingSlideAndSong } from "features/PlayerMusic/musicSlice";
-import { changePlaylist } from "features/PlayMusic/listSongSlice";
-import { addToast } from "features/Toast/toastSlice";
+// import { toggleLoadingSlideAndSong } from "features/PlayerMusic/musicSlice";
+// import { changePlaylist } from "features/PlayMusic/listSongSlice";
+// import { addToast } from "features/Toast/toastSlice";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+//import { useDispatch, useSelector } from "react-redux";
 import { getSlideIndex } from "utils";
 import PlaylistList from "./components/PlaylistList/PlaylistList";
 
@@ -18,29 +18,29 @@ function Playlist({
   playlistList = [],
   hasCreateItem = false,
 }) {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   //const playlistList = useSelector((state) => state.personalPlaylist.list);
-  const allPlaylistList = useSelector((state) => state.listSong.list);
+  //const allPlaylistList = useSelector((state) => state.listSong.list);
   const [slideIndex, setSlideIndex] = useState(0);
   const [step, setStep] = useState(5);
 
-  const handleChangePlaylist = (index) => {
-    // Because not enough Playlist so I prevent change to playlist that does not exist, and remove create playlist item
-    if (index > allPlaylistList.length) {
-      // Except first item - create item
-      if (index === 0) return;
-      dispatch(
-        addToast({
-          type: "info",
-          message: "Please choose 4 updated playlists",
-          duration: 3000,
-        })
-      );
-      return;
-    }
-    dispatch(changePlaylist(index - 1));
-    dispatch(toggleLoadingSlideAndSong(true));
-  };
+  // const handleChangePlaylist = (index) => {
+  //   // Because not enough Playlist so I prevent change to playlist that does not exist, and remove create playlist item
+  //   if (index > allPlaylistList.length) {
+  //     // Except first item - create item
+  //     if (index === 0) return;
+  //     dispatch(
+  //       addToast({
+  //         type: "info",
+  //         message: "Please choose 4 updated playlists",
+  //         duration: 3000,
+  //       })
+  //     );
+  //     return;
+  //   }
+  //   dispatch(changePlaylist(index - 1));
+  //   dispatch(toggleLoadingSlideAndSong(true));
+  // };
 
   const handleChangeIndex = (direction) => {
     const stepDirection = direction * step;

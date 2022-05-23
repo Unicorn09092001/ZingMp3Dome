@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { currentSongSelector } from "selectors/ListSongSelector";
+//import { currentSongSelector } from "selectors/ListSongSelector";
 
 function PopupContent() {
   const { isPlaying } = useSelector((state) => state.music);

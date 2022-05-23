@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import ContainerHeader from "components/Container/components/ContainerHeader/ContainerHeader";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { getSlideIndex } from "utils";
 import ArtistList from "./components/ArtistList/ArtistList";
 

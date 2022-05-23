@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "@testing-library/react";
 
 var songCurrentList = [
   {
@@ -106,8 +105,8 @@ const songCurrentDataSlice = createSlice({
   name: "songCurrentData",
   initialState: {
     songCurrentList: [...songCurrentList],
-    enCodeIDSong: "ZZ8FBUW9",
-    songIndexOfList: 0,
+    enCodeIDSong: "",
+    songIndexOfList: null,
     songPath: null,
     isPlaying: false,
     isLoading: true,

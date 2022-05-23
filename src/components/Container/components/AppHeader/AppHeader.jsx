@@ -21,7 +21,7 @@ function AppHeader(props) {
               className="app__user-img"
             />
           </div>
-          <span className="app__user-name">Trần Huyền My</span>
+          <span className="app__user-name">Phương Văn Chiến</span>
         </div>
         <div className="app__header-actions">
           <a

@@ -166,6 +166,8 @@ function ExplorePage() {
                 optionalClass="mt-30"
                 newReleaseList={newReleaseList}
                 noWrap
+                navigable
+                pathName={"moi-phat-hanh"}
                 sectionName="Mới phát hành"
               />
 

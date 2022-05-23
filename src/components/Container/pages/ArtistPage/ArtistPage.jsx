@@ -44,7 +44,6 @@ function ArtistPage() {
         <LoadingAnimate />
       ) : (
         <>
-          <AppHeader />
           <div className="content">
             <div className="content__navbar">
               <div className="content__navbar-container">

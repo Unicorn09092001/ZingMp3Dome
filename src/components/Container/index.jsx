@@ -33,7 +33,10 @@ function Container() {
         <Route path="" element={<TabHome />} />
         <Route path="songs" element={<TabSong listSong={listSong} />} />
         <Route path="playlists" element={<TabPlaylist />} />
-        <Route path="albums" element={<TabAlbum albumList={albumList} />} />
+        <Route
+          path="albums"
+          element={<TabAlbum albumList={albumList} sectionName="Album" />}
+        />
         <Route path="mvs" element={<TabMv mvList={mvList} />} />
         <Route path="artists" element={<TabArtist />} />
         <Route path="upload" element={<TabUpload />} />
@@ -79,8 +82,8 @@ function Container() {
             <Route path="video" element={<TabMv mvList={section.items} />} />
           ) : null;
         })}
-        <Route path="album" element={<TabAlbum />} />
-        <Route path="video" element={<TabMv />} />
+        <Route path="album" element={<TabAlbum sectionName="Album" />} />
+        <Route path="video" element={<TabMv sectionName="Album" />} />
       </Route>
     </Routes>
   );

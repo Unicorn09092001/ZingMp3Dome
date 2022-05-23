@@ -1,5 +1,9 @@
 import clsx from "clsx";
 import React, { useMemo } from "react";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
+import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
 import "./ExploreSlideItem.scss";
 
 function ExploreSlideItem({
@@ -38,6 +42,8 @@ function ExploreSlideItem({
       : slideIndex + 5;
   }, [slideIndex, listSlideLength]);
 
+  const dispatch = useDispatch();
+
   return (
     <div
       className={clsx("col", "l-4", "m-4", "c-6", "explore__slide-item", {
@@ -60,14 +66,21 @@ function ExploreSlideItem({
           order !== fifthSlideIndex,
       })}
     >
-      <div className="row__item-display">
+      <NavLink
+        to={"/playlist/id=" + slide.encodeId}
+        className="row__item-display"
+        onClick={() => {
+          dispatch(setIsLoadingTab(true));
+          dispatch(setPlaylistCurrent(slide.encodeId));
+        }}
+      >
         <div
           className="explore__slide-img row__item-img img--rec"
           style={{
             background: `url('${slide.banner}') no-repeat center center / cover`,
           }}
         ></div>
-      </div>
+      </NavLink>
     </div>
   );
 }

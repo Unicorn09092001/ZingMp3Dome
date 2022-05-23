@@ -2,16 +2,16 @@ import { editConfig } from "configSlice";
 import {
   toggleLoadingSlideAndSong,
   toggleLoadingSong,
-  togglePlaySong,
+  //togglePlaySong,
 } from "features/PlayerMusic/musicSlice";
 import { getNewIndex, getRandomIndex } from "features/PlayerMusic/utils";
-import { nextSong } from "features/PlayMusic/listSongSlice";
+//import { nextSong } from "features/PlayMusic/listSongSlice";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  currentListSongSelector,
-  currentSongSelector,
-} from "selectors/ListSongSelector";
+// import {
+//   currentListSongSelector,
+//   currentSongSelector,
+// } from "selectors/ListSongSelector";
 import PlayerContext from "./PlayerContext";
 import {
   setSongPlaying,
@@ -129,7 +129,7 @@ function PlayerProvider({ children }) {
 
   useEffect(() => {
     isLoading && isPlaying ? audioRef.current.play() : audioRef.current.pause();
-  }, [songCurrentData]);
+  }, [songCurrentData, isLoading, isPlaying]);
 
   const providerValue = {
     handleChangeSong,

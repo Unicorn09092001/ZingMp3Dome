@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { currentSongDuration } from "selectors/ListSongSelector";
+//import { currentSongDuration } from "selectors/ListSongSelector";
 import { formatAudioTime } from "utils";
 import "./ProgressControl.scss";
 

@@ -177,7 +177,7 @@ function SidebarSubNavigation() {
           </NavLink>
         </li>
         <li className="sidebar__menu-item">
-          <a href="/" className="sidebar__menu-link">
+          <NavLink to="/personal" className="sidebar__menu-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -225,10 +225,10 @@ function SidebarSubNavigation() {
             </svg>
 
             <span>Gần đây</span>
-          </a>
+          </NavLink>
         </li>
       </ul>
-      <ul className="sidebar__nav-list hide-on-tablet-mobile">
+      {/* <ul className="sidebar__nav-list hide-on-tablet-mobile">
         <li className="sidebar__nav-item">
           <a href="/" className="sidebar__item-link">
             <span className="sidebar__link-topic">Tháng 1</span>
@@ -244,7 +244,7 @@ function SidebarSubNavigation() {
             <span className="sidebar__link-topic">Sky Ơi</span>
           </a>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 }

@@ -11,6 +11,7 @@ function NewReleasePlaylist({
   noWrap,
   sectionName = "",
   navigable = false,
+  pathName = "",
 }) {
   const { step, slideIndex, handleChangeIndexByClick } = useAutomaticSlide(
     newReleaseList,
@@ -33,6 +34,7 @@ function NewReleasePlaylist({
           sectionName={sectionName}
           step={step}
           navigable={navigable}
+          pathName={pathName}
         />
       </div>
       <div className="col l-12 m-12 c-12">

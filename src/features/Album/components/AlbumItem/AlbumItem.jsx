@@ -1,10 +1,14 @@
 import HeartButton from "components/IconButton/HeartButton/HeartButton";
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
+import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
 
 function AlbumItem({ album }, ref) {
   const { title, thumbnail, releaseDateText } = album;
   const itemRef = useRef();
+  const dispatch = useDispatch();
 
   let isFavoritePlaylist = false;
 
@@ -57,10 +61,19 @@ function AlbumItem({ album }, ref) {
               }
               return renderContent;
             })}
-            <div className="btn--play-playlist">
-              <div className="control-btn btn-toggle-play">
+            <div
+              className="btn--play-playlist"
+              onClick={() => {
+                dispatch(setIsLoadingTab(true));
+                dispatch(setPlaylistCurrent(album.encodeId));
+              }}
+            >
+              <NavLink
+                to={"/playlist/id=" + album.encodeId}
+                className="control-btn btn-toggle-play"
+              >
                 <i className="bi bi-play-fill"></i>
-              </div>
+              </NavLink>
             </div>
             <div className="action-btn">
               <i className="btn--icon bi bi-three-dots"></i>

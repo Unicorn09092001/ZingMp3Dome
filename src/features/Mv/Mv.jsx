@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import ContainerHeader from "components/Container/components/ContainerHeader/ContainerHeader";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { getSlideIndex } from "utils";
 import MvList from "./components/MvList/MvList";
 
@@ -25,27 +25,36 @@ function Mv({
   };
 
   return (
-    <div
-      className={clsx("container__section", "row", {
-        [optionalClass]: !!optionalClass,
-      })}
-    >
-      <div className="col l-12 m-12 c-12 mb-16">
-        <ContainerHeader
-          onChangeIndex={handleChangeIndex}
-          listLength={mvList.length}
-          slideIndex={slideIndex}
-          sectionName={sectionName}
-          step={step}
-          noWrap={noWrap}
-          navigable={navigable}
-          pathName={pathName}
-        />
-      </div>
-      <div className="col l-12 m-12 c-12">
-        <MvList mvList={mvList} slideIndex={slideIndex} step={step} noWrap />
-      </div>
-    </div>
+    <>
+      {mvList.length > 0 && (
+        <div
+          className={clsx("container__section", "row", {
+            [optionalClass]: !!optionalClass,
+          })}
+        >
+          <div className="col l-12 m-12 c-12 mb-16">
+            <ContainerHeader
+              onChangeIndex={handleChangeIndex}
+              listLength={mvList.length}
+              slideIndex={slideIndex}
+              sectionName={sectionName}
+              step={step}
+              noWrap={noWrap}
+              navigable={navigable}
+              pathName={pathName}
+            />
+          </div>
+          <div className="col l-12 m-12 c-12">
+            <MvList
+              mvList={mvList}
+              slideIndex={slideIndex}
+              step={step}
+              noWrap
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

@@ -90,8 +90,8 @@ function SongItem({
   return (
     <div
       className={clsx("playlist__list-song media", {
-        active: currentIndex === songIndex || checked,
-        playing: isPlaying && currentIndex === songIndex,
+        // active: currentIndex === songIndex || checked,
+        // playing: isPlaying && currentIndex === songIndex,
       })}
       data-index="0"
       ref={songRef}

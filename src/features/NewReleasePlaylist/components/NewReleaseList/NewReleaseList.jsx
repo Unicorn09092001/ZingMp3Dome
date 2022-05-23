@@ -37,8 +37,9 @@ function NewReleaseList({
             <NewReleaseItem
               key={index}
               newReleasePlaylist={newReleasePlaylist}
-              itemIndex={index + 1}
+              itemIndex={index}
               ref={itemRef}
+              listSongCurrent={newReleaseList}
             />
           ) : (
             <div key={index} className="row__item item--new-playlist">

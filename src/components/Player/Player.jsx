@@ -13,7 +13,7 @@ Player.propTypes = {};
 function Player() {
   const dispatch = useDispatch();
   const [openPopup, setOpenPopup] = useState(false);
-  const { isPlaying, isFavorite, enCodeIDSong } = useSelector(
+  const { isPlaying, enCodeIDSong } = useSelector(
     (state) => state.songCurrentData
   );
   const currentTheme = useSelector(currentThemeSelector);

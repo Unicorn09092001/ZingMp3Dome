@@ -1,8 +1,8 @@
 import { toggleLoadingSong } from "features/PlayerMusic/musicSlice";
 import { nextSong } from "features/PlayMusic/listSongSlice";
 import React, { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { currentListDuration } from "selectors/ListSongSelector";
+import { useDispatch } from "react-redux";
+//import { currentListDuration } from "selectors/ListSongSelector";
 import SongItem from "../SongItem/SongItem";
 import "./SongList.scss";
 

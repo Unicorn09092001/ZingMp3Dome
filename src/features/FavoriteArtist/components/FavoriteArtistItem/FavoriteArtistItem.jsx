@@ -1,8 +1,13 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
+import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
 
 function FavoriteArtistItem({ artist = {} }, ref) {
   const { title, thumbnail, artistsNames, song } = artist;
   const itemRef = useRef();
+  const dispatch = useDispatch();
 
   useImperativeHandle(ref, () => ({
     getWidth() {
@@ -11,7 +16,15 @@ function FavoriteArtistItem({ artist = {} }, ref) {
   }));
 
   return (
-    <div className="row__item item--fav-artist" ref={itemRef}>
+    <NavLink
+      to={"/playlist/id=" + artist.encodeId}
+      className="row__item item--fav-artist"
+      ref={itemRef}
+      onClick={() => {
+        dispatch(setIsLoadingTab(true));
+        dispatch(setPlaylistCurrent(artist.encodeId));
+      }}
+    >
       <div className="row__item-container flex--top-left">
         <div className="row__item-display br-5">
           <div
@@ -47,7 +60,7 @@ function FavoriteArtistItem({ artist = {} }, ref) {
           </div>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 }
 

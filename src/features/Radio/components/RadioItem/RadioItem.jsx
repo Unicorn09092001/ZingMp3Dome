@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
 
 function RadioItem({ radio = {} }, ref) {
-  const { program, host, title, activeUsers } = radio;
+  const { program, host, activeUsers } = radio;
   const itemRef = useRef();
 
   useImperativeHandle(ref, () => ({

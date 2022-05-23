@@ -5,28 +5,30 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getFavoriteArtists,
   updateFavoriteArtists,
   removeFavoriteArtist,
 } from "app/services";
+import { NavLink } from "react-router-dom";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
 
 function ArtistItem({ artist, defaultFavorite }, ref) {
   let isfavoriteArtist = false;
+  const dispatch = useDispatch();
   const { totalFollow, thumbnail, name } = artist;
   const itemRef = useRef();
   const [isFavorite, setIsfavorite] = useState(defaultFavorite);
 
   const favoriteArtists = useSelector((state) => state.personalArtist.list);
-
   useEffect(() => {
     favoriteArtists.forEach((favoriteArtist) => {
       if (favoriteArtist.id === artist.id) {
         setIsfavorite(true);
       }
     });
-  }, []);
+  }, [favoriteArtists, artist.id]);
 
   const handleChooseArtist = () => {
     setIsfavorite(!isFavorite);
@@ -56,7 +58,13 @@ function ArtistItem({ artist, defaultFavorite }, ref) {
   return (
     <div className="row__item item--artist" ref={itemRef}>
       <div className="row__item-container flex--top-left">
-        <div className="row__item-display is-rounded">
+        <NavLink
+          to={"/artist/name=" + artist.alias}
+          className="row__item-display is-rounded"
+          onClick={() => {
+            dispatch(setArtistAlias(artist.alias));
+          }}
+        >
           <div
             className="row__item-img img--square is-rounded"
             style={{
@@ -71,20 +79,28 @@ function ArtistItem({ artist, defaultFavorite }, ref) {
             </div>
           </div>
           <div className="overlay"></div>
-        </div>
+        </NavLink>
         <div className="row__item-info media artist--info">
           <div className="media__left">
-            <div
-              href="#"
+            <NavLink
+              to={"/artist/name=" + artist.alias}
               className="row__info-name is-ghost mt-15 lh-19 text-center"
+              onClick={() => {
+                dispatch(setArtistAlias(artist.alias));
+              }}
             >
               {name}&nbsp;
               <i className="bi bi-star-fill row__info-icon">
                 <div className="icon-overlay"></div>
               </i>
-            </div>
+            </NavLink>
             <h3 className="row__info-creator text-center">
-              {totalFollow} quan tâm
+              {(totalFollow / 1000000).toFixed(1) > 1 ? (
+                <span>{(totalFollow / 1000000).toFixed(2)}M</span>
+              ) : (totalFollow / 1000).toFixed(1) > 1 ? (
+                <span>{(totalFollow / 1000).toFixed(0)}K</span>
+              ) : null}{" "}
+              quan tâm
             </h3>
           </div>
         </div>

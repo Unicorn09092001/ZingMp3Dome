@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { currentListSongSelector } from "selectors/ListSongSelector";
+// import { useSelector } from "react-redux";
+// import { currentListSongSelector } from "selectors/ListSongSelector";
 import SliderList from "./components/SlideList/SliderList";
 import "./SongSlide.scss";
 
