@@ -42,6 +42,7 @@
 		min-width: 45px;
 		height: 45px;
 	}
+
 }
 
 /* Tablet */
@@ -192,6 +193,30 @@
 	.media__info-header .info__title {
 		max-width: calc(100% - 90px);
 	}
+
+	
+	// tab playlist
+	.header__playlist {
+		display: flex;
+		padding: 0 0 30px;
+	}
+	.playlist__img {
+		width: 200px;
+	}
+	.playlist-infor {
+		padding: 0 0 0 30px;
+		text-align: left;
+		display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+	}
+	.playlist-infor-btn {
+		flex-direction: row;
+	}
+	.container__playlistPage {
+		margin: 0;
+	}
+
 }
 
 /* Mobile */
@@ -632,5 +657,30 @@
 	.toast {
 		max-width: calc(90vw - 10px);
 		min-width: calc(80vw - 10px);
+	}
+
+	// tab playlist
+	.header__playlist {
+		display: flex;
+		padding: 0 0 30px;
+	}
+	.playlist__img {
+		width: 200px;
+	}
+	.playlist-infor {
+		padding: 0 0 0 30px;
+		text-align: left;
+		display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+	}
+	.playlist-infor-btn {
+		flex-direction: row;
+	}
+	.container__playlistPage {
+		margin: 0;
+	}
+	.playlist-infor-btn .button {
+		margin-right: 10px;
 	}
 }

@@ -8,6 +8,9 @@ import {
   getFavoritePlaylists,
   updateFavoritePlaylists,
   removeFavoritePlaylist,
+  getFavoriteAlbums,
+  updateFavoriteAlbums,
+  removeFavoriteAlbum,
 } from "app/services";
 
 function HeartButton({
@@ -16,6 +19,7 @@ function HeartButton({
   optionalClass = "",
   songInfo,
   playlistInfo,
+  albumInfo,
 }) {
   const [primary, setPrimary] = useState(isPrimary);
   const heartIcon = useMemo(
@@ -26,6 +30,7 @@ function HeartButton({
   const handleChangePrimary = () => {
     let isCheckFavoriteSong = false;
     let isCheckFavoritePlaylist = false;
+    let isCheckFavoriteAlbum = false;
     setPrimary(!primary);
     if (songInfo) {
       getFavoriteSongs().then((songList) => {
@@ -66,6 +71,34 @@ function HeartButton({
                       thumbnail: playlistInfo.thumbnail,
                       thumbnailM: playlistInfo.thumbnailM,
                       creator: playlistInfo.userName,
+                    });
+              }
+            });
+      });
+    }
+    if (albumInfo) {
+      getFavoriteAlbums().then((albums) => {
+        albums.data.length === 0
+          ? updateFavoriteAlbums({
+              title: albumInfo.title,
+              encodeId: albumInfo.encodeId,
+              thumbnail: albumInfo.thumbnail,
+              thumbnailM: albumInfo.thumbnailM,
+              creator: albumInfo.userName,
+            })
+          : albums.data.forEach((album, index) => {
+              if (album.encodeId === albumInfo.encodeId) {
+                removeFavoriteAlbum(album.id);
+                isCheckFavoriteAlbum = true;
+              } else if (index === albums.data.length - 1) {
+                isCheckFavoriteAlbum
+                  ? (isCheckFavoriteAlbum = false)
+                  : updateFavoriteAlbums({
+                      title: albumInfo.title,
+                      encodeId: albumInfo.encodeId,
+                      thumbnail: albumInfo.thumbnail,
+                      thumbnailM: albumInfo.thumbnailM,
+                      creator: albumInfo.userName,
                     });
               }
             });

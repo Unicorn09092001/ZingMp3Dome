@@ -56,13 +56,13 @@ function PlaylistPage() {
         ) : (
           <>
             {resMsg === "Success" && (
-              <div className="Playlists__container tab--playlist">
+              <div className="Playlists__container ">
                 <div className="grid">
                   <div className="row no-gutters chart--container mt-10 mb-20">
-                    <div className=" col l-3 m-3 c-12">
+                    <div className=" col l-3 m-12 c-12">
                       <div className="header__playlist">
                         <div
-                          className="row__item-display "
+                          className="row__item-display playlist__img"
                           style={{ borderRadius: "10px" }}
                         >
                           <div
@@ -81,65 +81,69 @@ function PlaylistPage() {
                           <div className="overlay"></div>
                         </div>
                         <div className="playlist-infor">
-                          <div className="playlist-title">
-                            {playlistData?.title}
-                          </div>
                           <div>
-                            Cập nhật:{" "}
-                            {moment(playlistData?.timestamp).format(
-                              "DD/MM/YYYY"
-                            )}
+                            <div className="playlist-title">
+                              {playlistData?.title}
+                            </div>
+                            <div>
+                              Cập nhật:{" "}
+                              {moment(playlistData?.timestamp).format(
+                                "DD/MM/YYYY"
+                              )}
+                            </div>
+                            <div>
+                              {playlistData?.artists &&
+                                playlistData?.artists.map((artist, index) => (
+                                  <React.Fragment key={index}>
+                                    <NavLink
+                                      to={"/artist/name=" + artist.alias}
+                                      className="is-ghost"
+                                      onClick={() => {
+                                        dispatch(setArtistAlias(artist.alias));
+                                      }}
+                                    >
+                                      {artist.name}
+                                    </NavLink>
+                                    {index < playlistData.artists.length - 1 &&
+                                      ", "}
+                                  </React.Fragment>
+                                ))}
+                            </div>
+                            <div>
+                              {(playlistData?.like / 1000000).toFixed(1) > 1 ? (
+                                <span>
+                                  {(playlistData?.like / 1000000).toFixed(2)}M
+                                </span>
+                              ) : (playlistData?.like / 1000).toFixed(1) > 1 ? (
+                                <span>
+                                  {(playlistData?.like / 1000).toFixed(0)}K
+                                </span>
+                              ) : (
+                                playlistData?.like
+                              )}{" "}
+                              người yêu thích
+                            </div>
                           </div>
-                          <div>
-                            {playlistData?.artists &&
-                              playlistData?.artists.map((artist, index) => (
-                                <React.Fragment key={index}>
-                                  <NavLink
-                                    to={"/artist/name=" + artist.alias}
-                                    className="is-ghost"
-                                    onClick={() => {
-                                      dispatch(setArtistAlias(artist.alias));
-                                    }}
-                                  >
-                                    {artist.name}
-                                  </NavLink>
-                                  {index < playlistData.artists.length - 1 &&
-                                    ", "}
-                                </React.Fragment>
-                              ))}
-                          </div>
-                          <div>
-                            {(playlistData?.like / 1000000).toFixed(1) > 1 ? (
-                              <span>
-                                {(playlistData?.like / 1000000).toFixed(2)}M
-                              </span>
-                            ) : (playlistData?.like / 1000).toFixed(1) > 1 ? (
-                              <span>
-                                {(playlistData?.like / 1000).toFixed(0)}K
-                              </span>
-                            ) : (
-                              playlistData?.like
-                            )}{" "}
-                            người yêu thích
-                          </div>
-                          <button className="button is-small button-primary container__header-btn btn--play-all">
-                            <i className="bi bi-play-fill container__header-icon"></i>
-                            <span>Phát tất cả</span>
-                          </button>
-                          <div className="playlist-btn">
-                            <HeartButton
-                              primary
-                              hideOnMobile
-                              optionalClass="option-btn"
-                            />
-                            <div className="action-btn">
-                              <i className="btn--icon bi bi-three-dots"></i>
+                          <div className="playlist-infor-btn">
+                            <button className="button is-small button-primary btn--play-all">
+                              <i className="bi bi-play-fill container__header-icon"></i>
+                              <span>Phát tất cả</span>
+                            </button>
+                            <div className="playlist-btn">
+                              <HeartButton
+                                primary
+                                hideOnMobile
+                                optionalClass="option-btn"
+                              />
+                              <div className="action-btn">
+                                <i className="btn--icon bi bi-three-dots"></i>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className=" col l-9 m-9 c-12">
+                    <div className=" col l-9 m-12 c-12">
                       <div className="container__playlistPage">
                         {playlistData?.description && (
                           <div className="container__playlist-discription">

@@ -1,10 +1,15 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
 //import { currentSongSelector } from "selectors/ListSongSelector";
 
 function PopupContent() {
+  const dispatch = useDispatch();
   const { isPlaying } = useSelector((state) => state.music);
-  //const { image, name, singers } = useSelector(currentSongSelector);
+  const currentSong = useSelector((state) => {
+    return state.playSongCurrentInfo.listSong;
+  });
   const cdThumbRef = useRef();
   const cdAnimateRef = useRef();
 
@@ -31,25 +36,31 @@ function PopupContent() {
       <div className="player__popup-cd-display">
         <div
           className="player__popup-cd-img"
-          // style={{
-          //   background: `url('${image}') no-repeat center center / cover`,
-          // }}
+          style={{
+            background: `url('${currentSong.thumbnailM}') no-repeat center center / cover`,
+          }}
           ref={cdThumbRef}
         ></div>
       </div>
       <div className="player__popup-cd-info">
         <h4>Now playing</h4>
-        {/* <h2 className="is-twoline">{name}</h2>
+        <h2 className="is-twoline">{currentSong.title}</h2>
         <h3>
-          {singers.map((singer, index) => (
-            <React.Fragment key={index}>
-              <a href="/" className="is-ghost">
-                {singer}
-              </a>
-              {index < singers.length - 1 && ", "}
+          {currentSong.artists?.map((artist, index) => (
+            <React.Fragment key={artist.alias}>
+              <NavLink
+                to={"/artist/name=" + artist.alias}
+                className="is-ghost"
+                onClick={() => {
+                  dispatch(setArtistAlias(artist.alias));
+                }}
+              >
+                {artist.name}
+              </NavLink>
+              {index < currentSong.artists.length - 1 && ", "}
             </React.Fragment>
           ))}
-        </h3> */}
+        </h3>
       </div>
     </>
   );

@@ -14,7 +14,12 @@ import { currentThemeSelector } from "selectors/themeSelector";
 import { applyTheme } from "utils/theme";
 import { getFavoriteSongList } from "Slice/favoriteSongsSlice";
 import { setPersonalPlaylist } from "features/Playlist/personalPlaylistSlice";
-import { getFavoritePlaylists, getFavoriteSongs } from "app/services";
+import { setPersonalAlbum } from "features/Album/personalAlbumSlice";
+import {
+  getFavoritePlaylists,
+  getFavoriteSongs,
+  getFavoriteAlbums,
+} from "app/services";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +32,9 @@ function App() {
     });
     getFavoritePlaylists().then((res) => {
       dispatch(setPersonalPlaylist(res.data));
+    });
+    getFavoriteAlbums().then((res) => {
+      dispatch(setPersonalAlbum(res.data));
     });
   }, []);
 

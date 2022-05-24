@@ -41,7 +41,7 @@ function AlbumItem({ album }, ref) {
                     primary
                     hideOnMobile
                     optionalClass="option-btn"
-                    playlistInfo={album}
+                    albumInfo={album}
                   />
                 );
               }
@@ -54,7 +54,7 @@ function AlbumItem({ album }, ref) {
                       key={favoriteSong.encodeId}
                       hideOnMobile
                       optionalClass="option-btn"
-                      playlistInfo={album}
+                      albumInfo={album}
                     />
                   );
                 }

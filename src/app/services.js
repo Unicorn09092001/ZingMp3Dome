@@ -27,6 +27,9 @@ const API_FAVORITE_PLAYLIST =
 const API_FAVORITE_ARTISTS =
   "https://6220cd52afd560ea699df17d.mockapi.io/airtists/";
 
+const API_FAVORITE_ALBUMS =
+  "https://6220cd52afd560ea699df17d.mockapi.io/favoriteAlbum/";
+
 export const getApiChartPage = () => {
   return axios.get(API_CHART_PAGE);
 };
@@ -100,5 +103,18 @@ export const updateFavoriteArtists = (obj) => {
 
 export const removeFavoriteArtist = (id) => {
   var url = API_FAVORITE_ARTISTS + id;
+  return axios.delete(url);
+};
+
+export const getFavoriteAlbums = () => {
+  return axios.get(API_FAVORITE_ALBUMS);
+};
+
+export const updateFavoriteAlbums = (obj) => {
+  return axios.post(API_FAVORITE_ALBUMS, obj);
+};
+
+export const removeFavoriteAlbum = (id) => {
+  var url = API_FAVORITE_ALBUMS + id;
   return axios.delete(url);
 };

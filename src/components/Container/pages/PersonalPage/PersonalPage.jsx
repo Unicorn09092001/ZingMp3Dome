@@ -6,7 +6,12 @@ import { Outlet } from "react-router-dom";
 import AppHeader from "../../components/AppHeader/AppHeader";
 import { getFavoriteSongList } from "Slice/favoriteSongsSlice";
 import { setPersonalPlaylist } from "features/Playlist/personalPlaylistSlice";
-import { getFavoriteSongs, getFavoritePlaylists } from "app/services";
+import { setPersonalAlbum } from "features/Album/personalAlbumSlice";
+import {
+  getFavoriteSongs,
+  getFavoritePlaylists,
+  getFavoriteAlbums,
+} from "app/services";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import LoadingAnimate from "components/Container/components/LoadingAnimate/LoadingAnimate";
 
@@ -23,6 +28,9 @@ function PersonalPage() {
     });
     getFavoritePlaylists().then((res) => {
       dispatch(setPersonalPlaylist(res.data));
+    });
+    getFavoriteAlbums().then((res) => {
+      dispatch(setPersonalAlbum(res.data));
     });
   }, []);
 

@@ -11,6 +11,7 @@ import {
   songLoading,
   getSongPath,
   setIsFavorite,
+  setSongPlaying,
 } from "Slice/songCurrentDataSlice";
 import { getPlaySongCurrentInfo } from "Slice/playSongCurrentInfoSlice";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
@@ -72,7 +73,12 @@ function SongItem({
         })
       );
       getSongById(song.encodeId).then((res) => {
-        dispatch(getSongPath(res.data.data[128]));
+        if (res.data.msg === "Success") {
+          dispatch(getSongPath(res.data.data[128]));
+        } else {
+          alert("Bài hát chưa được cập nhật, vui lòng chọn bài khác");
+          dispatch(setSongPlaying(false));
+        }
         dispatch(songLoading(true));
       });
     }

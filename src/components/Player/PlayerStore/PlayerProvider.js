@@ -20,6 +20,7 @@ import {
   getSongPath,
 } from "Slice/songCurrentDataSlice";
 import { getSongById } from "app/services";
+import { getPlaySongCurrentInfo } from "Slice/playSongCurrentInfoSlice";
 
 function PlayerProvider({ children }) {
   const dispatch = useDispatch();
@@ -68,6 +69,7 @@ function PlayerProvider({ children }) {
       newSongIndex = getNewIndex(songCurrentList, songIndexOfList, direction);
     }
     //dispatch(nextSong(newSongIndex));
+    dispatch(getPlaySongCurrentInfo(songCurrentList[newSongIndex]));
     dispatch(
       changePlaySong({
         songIndexOfList: newSongIndex,
@@ -75,7 +77,12 @@ function PlayerProvider({ children }) {
       })
     );
     getSongById(songCurrentList[newSongIndex].encodeId).then((res) => {
-      dispatch(getSongPath(res.data.data[128]));
+      if (res.data.msg === "Success") {
+        dispatch(getSongPath(res.data.data[128]));
+      } else {
+        alert("Bài hát chưa được cập nhật, vui lòng chọn bài khác");
+        dispatch(setSongPlaying(false));
+      }
       dispatch(songLoading(true));
     });
     dispatch(setSongPlaying(true));
