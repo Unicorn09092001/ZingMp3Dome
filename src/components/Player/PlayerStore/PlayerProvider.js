@@ -77,14 +77,16 @@ function PlayerProvider({ children }) {
       })
     );
     getSongById(songCurrentList[newSongIndex].encodeId).then((res) => {
+      console.log(res)
       if (res.data.msg === "Success") {
         dispatch(getSongPath(res.data.data[128]));
+        
       } else {
         alert("Bài hát chưa được cập nhật, vui lòng chọn bài khác");
         dispatch(setSongPlaying(false));
       }
       dispatch(songLoading(true));
-    });
+    }).catch((res) => {console.log(res)});
     dispatch(setSongPlaying(true));
   };
 
@@ -103,18 +105,18 @@ function PlayerProvider({ children }) {
     audioRef.current.currentTime = currentTime;
   };
 
-  useEffect(() => {
-    //Prevent auto play in the first loading
-    if (firstLoading) return;
+  // useEffect(() => {
+  //   //Prevent auto play in the first loading
+  //   if (firstLoading) return;
 
-    // Play song when dependencies change
-    if (isPlaying) {
-      dispatch(setSongPlaying(true));
-      audioRef.current.play();
-    }
+  //   // Play song when dependencies change
+  //   if (isPlaying) {
+  //     dispatch(setSongPlaying(true));
+  //     audioRef.current.play();
+  //   }
 
-    // eslint-disable-next-line
-  }, [songIndex, isLoading, playlistIndex]);
+  //   // eslint-disable-next-line
+  // }, [songIndex, isLoading, playlistIndex]);
 
   useEffect(() => {
     const volumeValue = volumePercent / 100;

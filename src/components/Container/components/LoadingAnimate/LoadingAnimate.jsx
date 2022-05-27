@@ -7,7 +7,7 @@ function LoadingAnimate() {
       <div
         className="loading--animate-img"
         style={{
-          background: `url('/assets/img/loadingBackground.webp') no-repeat 50% / contain`,
+          background: `url('assets/img/loadingBackground.webp') no-repeat 50% / contain`,
         }}
       ></div>
     </div>

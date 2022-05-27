@@ -1,12 +1,12 @@
 var listLabel = [
 	{
-		image: '/assets/img/tabExplore/labels/label1.jpg',
+		image: 'assets/img/tabExplore/labels/label1.jpg',
 	},
 	{
-		image: '/assets/img/tabExplore/labels/label2.jpg',
+		image: 'assets/img/tabExplore/labels/label2.jpg',
 	},
 	{
-		image: '/assets/img/tabExplore/labels/label3.jpg',
+		image: 'assets/img/tabExplore/labels/label3.jpg',
 	},
 ];
 

@@ -14,6 +14,8 @@ import { getPlaySongCurrentInfo } from "Slice/playSongCurrentInfoSlice";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
 import { getSongById } from "app/services";
 import { NavLink } from "react-router-dom";
+import playingImg from "../../../../../public/assets/img/SongActiveAnimation/icon-playing.gif"
+import loadingImg from "../../../../../public/assets/img/SongActiveAnimation/loadingImg.gif"
 
 function SongRankingItem({ song = {}, songIndex, listSongCurrent }) {
   let isFavoriteSong = false;
@@ -48,7 +50,7 @@ function SongRankingItem({ song = {}, songIndex, listSongCurrent }) {
           isPlaying: true,
         })
       );
-      getSongById(song.encodeId).then((res) => {
+      getSongById(song.encodeId).then((res) => {console.log(res)
         if (res.data.msg === "Success") {
           dispatch(getSongPath(res.data.data[128]));
         } else {
@@ -56,7 +58,7 @@ function SongRankingItem({ song = {}, songIndex, listSongCurrent }) {
           dispatch(setSongPlaying(false));
         }
         dispatch(songLoading(true));
-      });
+      }).catch((res) => {console.log(res)});
     }
   };
 
@@ -99,10 +101,10 @@ function SongRankingItem({ song = {}, songIndex, listSongCurrent }) {
                 style={
                   isLoading
                     ? {
-                        background: `url('assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
+                        background: `url(${playingImg}) no-repeat 50% / contain`,
                       }
                     : {
-                        background: `url('assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
+                        background: `url(${loadingImg}) no-repeat 50% / contain`,
                       }
                 }
               ></div>

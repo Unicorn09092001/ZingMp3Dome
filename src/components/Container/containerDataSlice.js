@@ -4,17 +4,13 @@ import {
   SPECIAL_PLAYLIST_STORAGE_KEY,
   LABEL_STORAGE_KEY,
   SINGER_SLIDE_STORAGE_KEY,
-  EVENT_STORAGE_KEY,
-  NEW_PLAYLIST_STORAGE_KEY,
-  FAVORITE_ARTIST_STORAGE_KEY,
   BRAND_STORAGE_KEY,
 } from "constants/index";
 
 const containerDataSlice = createSlice({
   name: "containerData",
   initialState: {
-    normalPlaylist:
-      JSON.parse(localStorage.getItem(NORMAL_PLAYLIST_STORAGE_KEY)) || [],
+    normalPlaylist: [],
     specialPlaylist:
       JSON.parse(localStorage.getItem(SPECIAL_PLAYLIST_STORAGE_KEY)) || [],
     labelList: JSON.parse(localStorage.getItem(LABEL_STORAGE_KEY)) || [],

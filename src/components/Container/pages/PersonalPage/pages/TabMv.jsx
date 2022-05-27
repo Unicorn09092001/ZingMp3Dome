@@ -1,9 +1,7 @@
 import MvList from "features/Mv/components/MvList/MvList";
 import React from "react";
-import { useSelector } from "react-redux";
 
 function TabMv({ mvList = [] }) {
-  //const mvList = useSelector((state) => state.personalMv.list);
 
   return (
     <>

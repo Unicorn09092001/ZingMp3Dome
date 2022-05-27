@@ -1,9 +1,7 @@
-import ContentNavBar from "components/Container/components/ContentNavBar/ContentNavBar";
 import { toggleThickenHeader } from "configSlice";
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, NavLink } from "react-router-dom";
-import AppHeader from "../../components/AppHeader/AppHeader";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import LoadingAnimate from "components/Container/components/LoadingAnimate/LoadingAnimate";
 import { getApiArtistPage } from "app/services";

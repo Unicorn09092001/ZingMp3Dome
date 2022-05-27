@@ -72,7 +72,7 @@ function SongItem({
           isPlaying: true,
         })
       );
-      getSongById(song.encodeId).then((res) => {
+      getSongById(song.encodeId).then((res) => {console.log(res)
         if (res.data.msg === "Success") {
           dispatch(getSongPath(res.data.data[128]));
         } else {
@@ -80,7 +80,7 @@ function SongItem({
           dispatch(setSongPlaying(false));
         }
         dispatch(songLoading(true));
-      });
+      }).catch((res) => {console.log(res)});
     }
   };
 
@@ -140,10 +140,10 @@ function SongItem({
                 style={
                   isLoading
                     ? {
-                        background: `url('/assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
+                        background: `url('assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
                       }
                     : {
-                        background: `url('/assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
+                        background: `url('assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
                       }
                 }
               ></div>

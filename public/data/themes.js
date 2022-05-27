@@ -1,7 +1,7 @@
 const Themes = [
   [
     {
-      image: "/assets/img/themeBgs/listTheme1/theme1.svg",
+      image: "assets/img/themeBgs/listTheme1/theme1.svg",
       colors: {
         bgContentColor: "#ffffff1a",
         borderBox: "rgb(255 255 255 / 20%)",
@@ -19,10 +19,10 @@ const Themes = [
         navigationText: "#dadada",
         placeholderText: "#dadada",
       },
-      playerImage: "/assets/img/themeBgs/listTheme1/playerThemes/theme1.png",
+      playerImage: "assets/img/themeBgs/listTheme1/playerThemes/theme1.png",
     },
     {
-      image: "/assets/img/themeBgs/listTheme1/theme2.jpg",
+      image: "assets/img/themeBgs/listTheme1/theme2.jpg",
       colors: {
         bgContentColor: "#ffffff1a",
         borderBox: "rgb(255 255 255 / 20%)",
@@ -44,7 +44,7 @@ const Themes = [
   ],
   [
     {
-      image: "/assets/img/themeBgs/listTheme2/theme1.jpg",
+      image: "assets/img/themeBgs/listTheme2/theme1.jpg",
       colors: {
         bgContentColor: "#ffffff1a",
         borderBox: "rgb(255 255 255 / 20%)",
@@ -64,7 +64,7 @@ const Themes = [
       },
     },
     {
-      image: "/assets/img/themeBgs/listTheme2/theme2.jpg",
+      image: "assets/img/themeBgs/listTheme2/theme2.jpg",
       colors: {
         bgContentColor: "rgba(0,0,0,0.05)",
         borderBox: "rgba(0,0,0,0.2)",
@@ -84,7 +84,7 @@ const Themes = [
       },
     },
     {
-      image: "/assets/img/themeBgs/listTheme2/theme3.jpg",
+      image: "assets/img/themeBgs/listTheme2/theme3.jpg",
       colors: {
         bgContentColor: "#ffffff4d",
         borderBox: "rgba(0,0,0,0.2)",
@@ -104,7 +104,7 @@ const Themes = [
       },
     },
     {
-      image: "/assets/img/themeBgs/listTheme2/theme4.jpg",
+      image: "assets/img/themeBgs/listTheme2/theme4.jpg",
       colors: {
         bgContentColor: "rgba(0,0,0,0.05)",
         borderBox: "rgba(0,0,0,0.2)",
@@ -124,7 +124,7 @@ const Themes = [
       },
     },
     {
-      image: "/assets/img/themeBgs/listTheme2/theme5.jpg",
+      image: "assets/img/themeBgs/listTheme2/theme5.jpg",
       colors: {
         bgContentColor: "rgba(0,0,0,0.05)",
         borderBox: "rgba(0,0,0,0.2)",
@@ -144,7 +144,7 @@ const Themes = [
       },
     },
     {
-      image: "/assets/img/themeBgs/listTheme2/theme6.jpg",
+      image: "assets/img/themeBgs/listTheme2/theme6.jpg",
       colors: {
         bgContentColor: "rgba(0,0,0,0.05)",
         borderBox: "rgba(0,0,0,0.2)",
