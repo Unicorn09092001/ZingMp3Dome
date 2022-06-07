@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Container.scss";
@@ -19,6 +19,7 @@ import Top100Page from "./pages/top100Page/Top100Page";
 import PlaylistPage from "./pages/playlistPage/PlaylistPage";
 import ArtistPage from "./pages/ArtistPage/ArtistPage";
 import TabHomeArtist from "./pages/ArtistPage/tabs/tabHomeArtist";
+import SearchPage from "./pages/searchPage/SearchPage";
 
 function Container() {
   const playlistId = useSelector((state) => state.playlistCurrent.encodeId);
@@ -26,7 +27,8 @@ function Container() {
   const listSong = useSelector((state) => state.favoriteSongs.songList);
   const albumList = useSelector((state) => state.personalAlbum.list);
   const mvList = useSelector((state) => state.personalMv.list);
-
+  const {searchPath} = useSelector(state => state.searchKeyWord)
+  
   return (
     <Routes>
       <Route path="personal/" element={<PersonalPage />}>
@@ -85,6 +87,7 @@ function Container() {
         <Route path="album" element={<TabAlbum sectionName="Album" />} />
         <Route path="video" element={<TabMv sectionName="Album" />} />
       </Route>
+      <Route path={"/tim-kiem/tat-ca/key=" + encodeURI(searchPath)} element={<SearchPage />}/>
     </Routes>
   );
 }

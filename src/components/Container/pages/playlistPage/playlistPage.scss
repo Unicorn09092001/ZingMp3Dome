@@ -8,6 +8,11 @@
     .container__header-btn.button {
         margin: 20px auto;
     }
+    .rotate-Thumb {
+        will-change: transform;
+        animation: rotateThumb 10s linear infinite;
+        -webkit-animation: rotateThumb 10s linear infinite;
+    }
 }
 
 .header__playlist-thumbnail {

@@ -24,7 +24,7 @@ function PlayerPopup({ onClosePopup }) {
       <div className="player__popup-header">
         <div className="player__popup-logo">
           <img
-            src="assets/img/logos/small-logo.svg"
+            src="/assets/img/logos/small-logo.svg"
             alt="Logo"
             className="player__logo-img"
           />

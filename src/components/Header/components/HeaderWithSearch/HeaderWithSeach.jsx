@@ -8,7 +8,6 @@ function HeaderWithSeach(props) {
     <div className="header__with-search">
       <HeaderButton icon="bi bi-arrow-left" />
       <HeaderButton icon="bi bi-arrow-right" disabled />
-
       <SearchHistory />
     </div>
   );

@@ -69,11 +69,11 @@ function Player() {
           ? `url(${currentTheme.playerImage})`
           : "none",
       }}
-      onClick={handleOpenPopup}
+      //onClick={handleOpenPopup}
     >
       <PlayerProvider>
         <PlayerMusic />
-        <PlayerPopup onClosePopup={handleClosePopup} />
+        {/* <PlayerPopup onClosePopup={handleClosePopup} /> */}
       </PlayerProvider>
     </div>
   );

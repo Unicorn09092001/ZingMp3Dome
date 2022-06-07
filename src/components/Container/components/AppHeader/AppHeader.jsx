@@ -8,7 +8,7 @@ function AppHeader(props) {
         className="app__header-bg"
         style={{
           background:
-            "url('assets/img/avatars/avatar.jpg') no-repeat center center / cover",
+            "url('/assets/img/avatars/avatar.jpg') no-repeat center center / cover",
         }}
       ></div>
       <div className="app__header-overlay"></div>
@@ -16,7 +16,7 @@ function AppHeader(props) {
         <div className="app__header-user">
           <div className="app__user-avatar">
             <img
-              src="assets/img/avatars/avatar.jpg"
+              src="/assets/img/avatars/avatar.jpg"
               alt=""
               className="app__user-img"
             />

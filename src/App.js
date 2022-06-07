@@ -19,7 +19,11 @@ import {
   getFavoritePlaylists,
   getFavoriteSongs,
   getFavoriteAlbums,
+  getHistoryPage
 } from "app/services";
+import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
+import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
+import { setArtistAlias } from "Slice/artistPageDataSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +56,17 @@ function App() {
       setLoading(false);
     });
   }, []);
+
+  window.onload = () => {
+    getHistoryPage().then((history) => {
+      if(history.data.page === "playlist") {
+        dispatch(setIsLoadingTab(true));
+        dispatch(setPlaylistCurrent(history.data.encodeId));
+      } else if (history.data.page === "artist") {
+        dispatch(setArtistAlias(history.data.alias));
+      }
+    })
+  }
 
   return (
     <GlobalStyles>

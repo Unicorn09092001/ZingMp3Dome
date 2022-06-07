@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./PlayerSongInfo.scss";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
+import { setHistoryPage } from "app/services";
 
 function PlayerSongInfo({ currentSong = {}, isPopupSection }) {
   const { title, thumbnail, artists } = currentSong;
@@ -114,6 +115,7 @@ function PlayerSongInfo({ currentSong = {}, isPopupSection }) {
                     className="is-ghost"
                     onClick={() => {
                       dispatch(setArtistAlias(artist.alias));
+                      setHistoryPage({alias: artist.alias, page: "artist"})
                     }}
                   >
                     {artist.name}

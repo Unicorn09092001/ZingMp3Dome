@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
+import { setHistoryPage } from "app/services";
 
 function FavoriteArtistItem({ artist = {} }, ref) {
   const { title, thumbnail, artistsNames, song } = artist;
@@ -23,6 +24,7 @@ function FavoriteArtistItem({ artist = {} }, ref) {
       onClick={() => {
         dispatch(setIsLoadingTab(true));
         dispatch(setPlaylistCurrent(artist.encodeId));
+        setHistoryPage({encodeId: artist.encodeId, page: "playlist"})
       }}
     >
       <div className="row__item-container flex--top-left">

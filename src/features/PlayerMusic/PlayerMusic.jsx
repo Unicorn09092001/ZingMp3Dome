@@ -1,7 +1,7 @@
 import React from "react";
 import PlayerControl from "./components/PlayerControl/PlayerControl";
 import PlayerSongInfo from "./components/PlayerSongInfo/PlayerSongInfo";
-import PlayerOption from "./components/PlayerOption";
+import PlayerOption from "./components/PlayerOption/PlayerOption";
 import "./PlayerMusic.scss";
 import { useSelector } from "react-redux";
 

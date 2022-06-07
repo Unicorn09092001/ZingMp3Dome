@@ -7,9 +7,11 @@ import { getNewRelease } from "Slice/newReleaseSlice";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import LoadingAnimate from "components/Container/components/LoadingAnimate/LoadingAnimate";
 
+
 function NewReleasePage() {
   const dispatch = useDispatch();
   const containerRef = useRef();
+
 
   const { listSong } = useSelector((state) => state.newRelease);
   const isLoading = useSelector((state) => state.isLoadingTab.isLoading);

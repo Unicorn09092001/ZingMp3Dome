@@ -34,12 +34,12 @@ function Sidebar() {
       <div className="sidebar__logo hide-on-mobile">
         <a href="/" className="sidebar__logo-link">
           <img
-            src="assets/img/logos/main-logo.svg"
+            src="/assets/img/logos/main-logo.svg"
             alt="Logo"
             className="sidebar__logo-img"
           />
           <img
-            src="assets/img/logos/small-logo.svg"
+            src="/assets/img/logos/small-logo.svg"
             alt="Logo"
             className="sidebar__small-logo"
           />

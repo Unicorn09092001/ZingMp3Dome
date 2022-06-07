@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
+import { setHistoryPage } from "app/services";
 import "./ExploreSlideItem.scss";
 
 function ExploreSlideItem({
@@ -72,6 +73,7 @@ function ExploreSlideItem({
         onClick={() => {
           dispatch(setIsLoadingTab(true));
           dispatch(setPlaylistCurrent(slide.encodeId));
+          setHistoryPage({encodeId: slide.encodeId, page: "playlist"})
         }}
       >
         <div

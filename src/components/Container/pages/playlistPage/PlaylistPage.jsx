@@ -12,6 +12,7 @@ import Artist from "features/Artist/Artist";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import LoadingAnimate from "components/Container/components/LoadingAnimate/LoadingAnimate";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
+import { setHistoryPage } from "app/services";
 
 function PlaylistPage() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function PlaylistPage() {
 
   const playlistId = useSelector((state) => state.playlistCurrent.encodeId);
   const isLoading = useSelector((state) => state.isLoadingTab.isLoading);
+  const {isPlaying} = useSelector((state) => state.songCurrentData)
 
   useEffect(() => {
     getPlaylistById(playlistId).then((res) => {
@@ -32,6 +34,7 @@ function PlaylistPage() {
       dispatch(setIsLoadingTab(false));
     });
   }, [playlistId]);
+
 
   useEffect(() => {
     const containerElement = containerRef.current;
@@ -63,21 +66,44 @@ function PlaylistPage() {
                       <div className="header__playlist">
                         <div
                           className="row__item-display playlist__img"
-                          style={{ borderRadius: "10px" }}
+                         // className={isPlaying ? "row__item-display playlist__img rotate-Thumb" : "row__item-display playlist__img"}
+                          style={isPlaying ? { borderRadius: "50%" } : { borderRadius: "10px" }}
                         >
                           <div
-                            className="row__item-img img--square "
+                            //className="row__item-img img--square "
+                            className={isPlaying ? "row__item-img img--square rotate-Thumb" : "row__item-img img--square"}
                             style={{
                               background: `url('${playlistData?.thumbnailM}') no-repeat center center / contain`,
                             }}
                           ></div>
                           <div className="row__item-actions">
+                            {isPlaying ? (
+                              <div
+                                className="thumb--animate"
+                                style={{ visibility: "initial" }}
+                              >
+                                <div
+                                  className="thumb--animate-img"
+                                  style={{
+                                    background: `url('/assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
+                                  }}
+                                ></div>
+                              </div>
+                            ) : (
+                              <div className="btn--play-new-playlist">
+                                <div className="control-btn btn-toggle-play">
+                                  <i className="bi bi-play-fill"></i>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                          {/* <div className="row__item-actions">
                             <div className="btn--play-playlist">
                               <div className="control-btn btn-toggle-play">
                                 <i className="bi bi-play-fill icon-play"></i>
                               </div>
                             </div>
-                          </div>
+                          </div> */}
                           <div className="overlay"></div>
                         </div>
                         <div className="playlist-infor">
@@ -100,6 +126,7 @@ function PlaylistPage() {
                                       className="is-ghost"
                                       onClick={() => {
                                         dispatch(setArtistAlias(artist.alias));
+                                        setHistoryPage({alias: artist.alias, page: "artist"})
                                       }}
                                     >
                                       {artist.name}

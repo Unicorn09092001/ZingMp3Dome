@@ -12,10 +12,9 @@ import {
 } from "Slice/songCurrentDataSlice";
 import { getPlaySongCurrentInfo } from "Slice/playSongCurrentInfoSlice";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
-import { getSongById } from "app/services";
+import { getSongById, setHistoryPage } from "app/services";
 import { NavLink } from "react-router-dom";
-import playingImg from "../../../../../public/assets/img/SongActiveAnimation/icon-playing.gif"
-import loadingImg from "../../../../../public/assets/img/SongActiveAnimation/loadingImg.gif"
+
 
 function SongRankingItem({ song = {}, songIndex, listSongCurrent }) {
   let isFavoriteSong = false;
@@ -101,10 +100,10 @@ function SongRankingItem({ song = {}, songIndex, listSongCurrent }) {
                 style={
                   isLoading
                     ? {
-                        background: `url(${playingImg}) no-repeat 50% / contain`,
+                        background: `url('/assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
                       }
                     : {
-                        background: `url(${loadingImg}) no-repeat 50% / contain`,
+                        background: `url('/assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
                       }
                 }
               ></div>
@@ -130,6 +129,7 @@ function SongRankingItem({ song = {}, songIndex, listSongCurrent }) {
                   className="is-ghost"
                   onClick={() => {
                     dispatch(setArtistAlias(artist.alias));
+                    setHistoryPage({alias: artist.alias, page: "artist"})
                   }}
                 >
                   {artist.name}

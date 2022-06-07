@@ -1,34 +1,43 @@
 import axios from "axios";
 
-const API_CHART_PAGE = "https://music-player-pink.vercel.app/api/chart-home";
+const API_CHART_PAGE = "http://localhost:3000/api/chart-home";
 
-const API_NEW_RELEASE_PAGE =
-  "https://music-player-pink.vercel.app/api/playlist?id=ZABDOABU";
+const API_NEW_RELEASE_PAGE = "http://localhost:3000/api/playlist?id=ZABDOABU";
 
-const API_PATH_SONG = "https://music-player-pink.vercel.app/api/song?id=";
+const API_PATH_SONG = "http://localhost:3000/api/song?id=";
 
-const API_SONG_INFO = "https://music-player-pink.vercel.app/api/info?id=";
+const API_SONG_INFO = "http://localhost:3000/api/info?id=";
 
-const API_ARTIST_PAGE = "https://music-player-pink.vercel.app/api/artist?name=";
+const API_ARTIST_PAGE = "http://localhost:3000/api/artist?name=";
 
-const API_EXPLORE_PAGE = "https://music-player-pink.vercel.app/api/home?page=";
+const API_EXPLORE_PAGE = "http://localhost:3000/api/home?page=";
 
-const API_TOP100_PAGE = "https://music-player-pink.vercel.app/api/top100";
+//const API_TOP100_PAGE = "http://localhost:3000/api/top100";
+const API_TOP100_PAGE = "http://localhost:3000/api/top100";
 
-const API_PLAYLIST_INFO =
-  "https://music-player-pink.vercel.app/api/playlist?id=";
+const API_PLAYLIST_INFO = "http://localhost:3000/api/playlist?id=";
+//"http://localhost:3000/api/playlist?id=";
 
 const API_FAVORITE_SONGS =
-  "https://6220cd52afd560ea699df17d.mockapi.io/favoriteSongList/";
+  "http://6220cd52afd560ea699df17d.mockapi.io/favoriteSongList/";
 
 const API_FAVORITE_PLAYLIST =
-  "https://6220cd52afd560ea699df17d.mockapi.io/favoritePlaylist/";
+  "http://6220cd52afd560ea699df17d.mockapi.io/favoritePlaylist/";
 
 const API_FAVORITE_ARTISTS =
-  "https://6220cd52afd560ea699df17d.mockapi.io/airtists/";
+  "http://6220cd52afd560ea699df17d.mockapi.io/airtists/";
 
 const API_FAVORITE_ALBUMS =
-  "https://6220cd52afd560ea699df17d.mockapi.io/favoriteAlbum/";
+  "http://6220cd52afd560ea699df17d.mockapi.io/favoriteAlbum/";
+
+const HISTORY_PAGE = "https://629f0c738b939d3dc28d6fcc.mockapi.io/History_path/1"
+
+const API_SEARCH="http://localhost:3000/api/search?keyword=";
+
+export const getApiSearch = (keyWord) => {
+  var url = API_SEARCH + keyWord;
+  return axios.get(url)
+}
 
 export const getApiChartPage = () => {
   return axios.get(API_CHART_PAGE);
@@ -118,3 +127,11 @@ export const removeFavoriteAlbum = (id) => {
   var url = API_FAVORITE_ALBUMS + id;
   return axios.delete(url);
 };
+
+export const getHistoryPage = () => {
+  return axios.get(HISTORY_PAGE)
+}
+
+export const setHistoryPage = (obj) => {
+  return axios.put(HISTORY_PAGE, obj)
+}

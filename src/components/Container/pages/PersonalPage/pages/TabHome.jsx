@@ -34,7 +34,7 @@ function TabHome() {
       <Playlist
         playlistList={playlistList}
         hasCreateItem
-        noWrap
+        noWrap={playlistList.length > 5 ? true : false}
         sectionName="Playlist"
         navigable
         pathName="playlists"
@@ -42,7 +42,7 @@ function TabHome() {
 
       <Album
         optionalClass={"mt-50"}
-        noWrap
+        noWrap={favoriteAlbums.length > 5 ? true : false}
         sectionName="Album"
         navigable
         pathName="albums"
@@ -51,7 +51,7 @@ function TabHome() {
 
       <Mv
         optionalClass={"mt-50"}
-        noWrap
+        noWrap={mvList.length > 5 ? true : false}
         sectionName="MV"
         navigable
         pathName="mvs"
@@ -60,7 +60,7 @@ function TabHome() {
 
       <Artist
         optionalClass={"mt-30"}
-        noWrap
+        noWrap={artistList.length > 5 ? true : false}
         sectionName="Artist"
         navigable
         artistList={artistList}

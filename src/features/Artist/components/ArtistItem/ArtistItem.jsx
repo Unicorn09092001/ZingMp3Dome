@@ -10,6 +10,7 @@ import {
   getFavoriteArtists,
   updateFavoriteArtists,
   removeFavoriteArtist,
+  setHistoryPage
 } from "app/services";
 import { NavLink } from "react-router-dom";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
@@ -63,6 +64,7 @@ function ArtistItem({ artist, defaultFavorite }, ref) {
           className="row__item-display is-rounded"
           onClick={() => {
             dispatch(setArtistAlias(artist.alias));
+            setHistoryPage({alias: artist.alias, page: "artist"})
           }}
         >
           <div
@@ -87,6 +89,7 @@ function ArtistItem({ artist, defaultFavorite }, ref) {
               className="row__info-name is-ghost mt-15 lh-19 text-center"
               onClick={() => {
                 dispatch(setArtistAlias(artist.alias));
+                setHistoryPage({alias: artist.alias, page: "artist"})
               }}
             >
               {name}&nbsp;

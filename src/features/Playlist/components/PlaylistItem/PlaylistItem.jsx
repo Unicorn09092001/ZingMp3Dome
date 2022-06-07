@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
+import { setHistoryPage } from "app/services";
 
 function PlaylistItem({ playlist, playlistIndex, onChangePlaylist }, ref) {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function PlaylistItem({ playlist, playlistIndex, onChangePlaylist }, ref) {
   const handleChangePlaylist = () => {
     dispatch(setIsLoadingTab(true));
     dispatch(setPlaylistCurrent(playlist.encodeId));
+    setHistoryPage({encodeId: playlist.encodeId, page: "playlist"})
     if (onChangePlaylist) onChangePlaylist(playlistIndex);
   };
 

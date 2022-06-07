@@ -45,7 +45,7 @@ function RadioItem({ radio = {} }, ref) {
             <div
               className="row__item-img img--square is-rounded"
               style={{
-                background: `url('${program.thumbnail}') no-repeat center center / contain`,
+                background: `url('${program?.thumbnail}') no-repeat center center / contain`,
               }}
             ></div>
             <div className="row__item-actions hide-on-mobile">
@@ -62,7 +62,7 @@ function RadioItem({ radio = {} }, ref) {
             <div
               className="radio__logo-img"
               style={{
-                background: `url('${host.thumbnail}') no-repeat center center / cover`,
+                background: `url('${host?.thumbnail}') no-repeat center center / cover`,
               }}
             ></div>
           </div>
@@ -71,7 +71,7 @@ function RadioItem({ radio = {} }, ref) {
           <div className="media__left">
             <div className="media__info text-center">
               <span className="info__title is-active is-oneline">
-                {host.name}
+                {host?.name}
               </span>
               <h3 className="row__info-creator text-center">
                 {activeUsers} đang nghe

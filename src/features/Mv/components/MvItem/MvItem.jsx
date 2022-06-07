@@ -1,4 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import { formatAudioTime } from "utils";
 
 function MvItem({ mv }, ref) {
@@ -39,18 +40,18 @@ function MvItem({ mv }, ref) {
             <div
               className="media__thumb is-rounded mr-10"
               style={{
-                background: `url('${artist.thumbnail}') no-repeat center center / cover`,
+                background: `url('${artist?.thumbnail}') no-repeat center center / cover`,
               }}
             ></div>
             <div className="media__info">
               <span className="info__title is-active is-twoline">{title}</span>
               <p className="info__author">
-                {artists.map((item, index) => (
+                {artists?.map((item, index) => (
                   <React.Fragment key={index}>
-                    <a href="/" className="is-ghost">
-                      {item.name}
-                    </a>
-                    {index < artists.length - 1 && ", "}
+                    <NavLink to={"/artist/name=" + artist.alias} className="is-ghost">
+                      {item?.name}
+                    </NavLink>
+                    {index < artists?.length - 1 && ", "}
                   </React.Fragment>
                 ))}
               </p>

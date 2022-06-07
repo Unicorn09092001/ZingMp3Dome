@@ -225,7 +225,7 @@ function HeaderNavigation() {
           </li>
           <li className="header__nav-item">
             <img
-              src="assets/img/avatars/avatar.jpg"
+              src="/assets/img/avatars/avatar.jpg"
               alt=""
               className="header__nav-btn"
             />

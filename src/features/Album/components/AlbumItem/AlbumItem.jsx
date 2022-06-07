@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
+import { setHistoryPage } from "app/services";
 
 function AlbumItem({ album }, ref) {
   const { title, thumbnail, releaseDateText } = album;
@@ -66,6 +67,7 @@ function AlbumItem({ album }, ref) {
               onClick={() => {
                 dispatch(setIsLoadingTab(true));
                 dispatch(setPlaylistCurrent(album.encodeId));
+                setHistoryPage({encodeId: album.encodeId, page: "playlist"})
               }}
             >
               <NavLink

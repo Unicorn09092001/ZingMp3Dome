@@ -33,7 +33,7 @@ function PlayerProvider({ children }) {
   const { isLoading, isPlaying, songPath, songIndexOfList, songCurrentList } =
     useSelector((state) => state.songCurrentData);
   const songCurrentData = useSelector((state) => state.songCurrentData);
-  const { firstLoading } = useSelector((state) => state.config);
+  //const { firstLoading } = useSelector((state) => state.config);
   const { songIndex, playlistIndex } = useSelector((state) => state.listSong);
   //const listSong = useSelector(currentListSongSelector);
   //const currentSong = useSelector(currentSongSelector);
@@ -125,6 +125,7 @@ function PlayerProvider({ children }) {
 
   // Save config
   useEffect(() => {
+    console.log(songCurrentList)
     const newConfig = { ...config };
     newConfig["songIndex"] = songIndex;
     newConfig["playlistIndex"] = playlistIndex;

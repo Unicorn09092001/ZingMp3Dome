@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
 import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
+import { setHistoryPage } from "app/services";
 
 function PlaylistItemInfo({ playlist }) {
   const {
@@ -34,6 +35,7 @@ function PlaylistItemInfo({ playlist }) {
           onClick={() => {
             dispatch(setIsLoadingTab(true));
             dispatch(setPlaylistCurrent(playlist.encodeId));
+            setHistoryPage({encodeId: playlist.encodeId, page: "playlist"})
           }}
         >
           {title}
@@ -49,6 +51,7 @@ function PlaylistItemInfo({ playlist }) {
                 className="is-ghost"
                 onClick={() => {
                   dispatch(setArtistAlias(artist.alias));
+                  setHistoryPage({alias: artist.alias, page: "artist"})
                 }}
               >
                 {artist.name}

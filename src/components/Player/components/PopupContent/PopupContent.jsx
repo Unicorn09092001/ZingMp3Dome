@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
+import { setHistoryPage } from "app/services";
 //import { currentSongSelector } from "selectors/ListSongSelector";
 
 function PopupContent() {
@@ -53,6 +54,7 @@ function PopupContent() {
                 className="is-ghost"
                 onClick={() => {
                   dispatch(setArtistAlias(artist.alias));
+                  setHistoryPage({alias: artist.alias, page: "artist"})
                 }}
               >
                 {artist.name}

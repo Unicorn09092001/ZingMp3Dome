@@ -15,7 +15,7 @@ import {
 } from "Slice/songCurrentDataSlice";
 import { getPlaySongCurrentInfo } from "Slice/playSongCurrentInfoSlice";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
-import { getSongById } from "app/services";
+import { getSongById, setHistoryPage } from "app/services";
 import { NavLink } from "react-router-dom";
 
 function SongItem({
@@ -140,10 +140,10 @@ function SongItem({
                 style={
                   isLoading
                     ? {
-                        background: `url('assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
+                        background: `url('/assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
                       }
                     : {
-                        background: `url('assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
+                        background: `url('/assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
                       }
                 }
               ></div>
@@ -169,6 +169,7 @@ function SongItem({
                   className="is-ghost"
                   onClick={() => {
                     dispatch(setArtistAlias(artist.alias));
+                    setHistoryPage({alias: artist.alias, page: "artist"})
                   }}
                 >
                   {artist.name}

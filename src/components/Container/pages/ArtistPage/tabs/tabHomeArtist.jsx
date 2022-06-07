@@ -26,7 +26,7 @@ function TabHomeArtist() {
             optionalClass={"mt-50"}
             sectionName={section?.title}
             navigable
-            noWrap
+            noWrap={section?.items.length > 5 ? true : false}
             pathName="single"
             albumList={section?.items}
           />
@@ -35,14 +35,14 @@ function TabHomeArtist() {
             optionalClass={"mt-50"}
             sectionName={section?.title}
             navigable
-            noWrap
+            noWrap={section?.items.length > 5 ? true : false}
             pathName="album"
             albumList={section?.items}
           />
         ) : section?.title === "MV" ? (
           <Mv
             optionalClass={"mt-50"}
-            noWrap
+            noWrap={section?.items?.length > 5 ? true : false}
             sectionName={section?.title}
             navigable
             pathName="video"

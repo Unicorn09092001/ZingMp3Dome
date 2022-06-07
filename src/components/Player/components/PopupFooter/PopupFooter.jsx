@@ -1,6 +1,6 @@
 import PlayerControl from "features/PlayerMusic/components/PlayerControl/PlayerControl";
 import PlayerSongInfo from "features/PlayerMusic/components/PlayerSongInfo/PlayerSongInfo";
-import PlayerOption from "features/PlayerMusic/components/PlayerOption";
+import PlayerOption from "features/PlayerMusic/components/PlayerOption/PlayerOption";
 import React from "react";
 import { useSelector } from "react-redux";
 //import { currentSongSelector } from "selectors/ListSongSelector";

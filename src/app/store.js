@@ -21,6 +21,7 @@ import favoriteSongsReducer from "Slice/favoriteSongsSlice";
 import playlistCurrentReducer from "Slice/playlistCurrentSlice";
 import isLoadingTabReducer from "Slice/isLoadingTabSlice";
 import artistPageDataReducer from "Slice/artistPageDataSlice";
+import searchKeyWordReducer from "Slice/searchKeyWordSlice"
 
 const rootReducer = {
   listSong: songReducer,
@@ -46,6 +47,7 @@ const rootReducer = {
   playlistCurrent: playlistCurrentReducer,
   isLoadingTab: isLoadingTabReducer,
   artistPageData: artistPageDataReducer,
+  searchKeyWord: searchKeyWordReducer,
 };
 
 const store = configureStore({
