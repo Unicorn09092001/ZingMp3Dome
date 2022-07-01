@@ -1,3 +1,5 @@
+
+
 .playlist-tab {
     background: var(--sidebar-popup-bg);
     height: calc(100vh - 90px);
@@ -5,11 +7,12 @@
     position: fixed;
     top: 0;
     .playlist-tab-header {
-        font-size: 18px;
-        font-weight: 500;
+        font-size: 20px;
+        font-weight: 600;
         line-height: 42px;
         color: var(--text-color);
         padding: 14px 8px;
+        text-align: center;
     }
     .playlist-tab-body {
         padding: 0 8px 15px 8px;
@@ -21,6 +24,12 @@
         &::-webkit-scrollbar-thumb {
             background: #888; 
             border-radius: 99px;
+        }
+        .next-song {
+            padding: 15px 8px 5px;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 15px
         }
     }
 }

@@ -29,12 +29,12 @@ function PlaylistPage() {
 
   useEffect(() => {
     getPlaylistById(playlistId).then((res) => {
+      console.log(res.data.data)
       setResMsg(res.data.msg);
       dispatch(setPlaylistData(res.data.data));
       dispatch(setIsLoadingTab(false));
     });
   }, [playlistId]);
-
 
   useEffect(() => {
     const containerElement = containerRef.current;

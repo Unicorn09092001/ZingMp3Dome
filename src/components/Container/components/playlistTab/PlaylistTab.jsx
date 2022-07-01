@@ -27,14 +27,18 @@ function PlaylistTab({ isOpen, isClose }) {
     (state) => state.songCurrentData
   );
 
+  const { listSong } = useSelector((state) => state.playSongCurrentInfo);
+
   const favoriteSongs = useSelector((state) => state.favoriteSongs.songList);
+
+ 
 
   const handlePlay = (song, songIndex) => {
     dispatch(setIsFavorite(false));
     if (song.encodeId === enCodeIDSong) {
       dispatch(
         getSongDataCurrent({
-          songCurrentList: [...songCurrentList],
+          songCurrentList: songCurrentList,
           enCodeIDSong: song.encodeId,
           songIndexOfList: songIndex,
           isPlaying: !isPlaying,
@@ -45,7 +49,7 @@ function PlaylistTab({ isOpen, isClose }) {
       dispatch(getPlaySongCurrentInfo(song));
       dispatch(
         getSongDataCurrent({
-          songCurrentList: [...songCurrentList],
+          songCurrentList: songCurrentList,
           enCodeIDSong: song.encodeId,
           songIndexOfList: songIndex,
           isPlaying: true,
@@ -68,131 +72,232 @@ function PlaylistTab({ isOpen, isClose }) {
     }
   };
   return (
-    <div
-      className={clsx(
-        "playlist-tab",
-        { "playlist-tab-open": isOpen },
-        { "playlist-tab-close": isClose }
-      )}
-    >
-      <div className="playlist-tab-header">Danh Sách Phát</div>
-      <div className="playlist-tab-body">
-        {/* <SongList listSong={songCurrentList} /> */}
-        <div className="playlist__list">
-          {songCurrentList.map((song, index) => (
+    <div className="playlist-tab-container">
+      <div
+        className={clsx(
+          "playlist-tab",
+          { "playlist-tab-open": isOpen },
+          { "playlist-tab-close": isClose }
+        )}
+      >
+        <div className="playlist-tab-header">Danh Sách Phát</div>
+        <div className="playlist-tab-body">
+          <div
+            className={clsx("playlist__list-song media")}
+            data-index="0"
+            //ref={songRef}
+            //onClick={handleClickSong}
+            style={
+              listSong.encodeId === enCodeIDSong
+                ? { background: "var(--bg-content-color)" }
+                : {}
+            }
+          >
             <div
-              className={clsx("playlist__list-song media")}
-              data-index="0"
-              //ref={songRef}
-              //onClick={handleClickSong}
-              style={
-                song.encodeId === enCodeIDSong
-                  ? { background: "var(--bg-content-color)" }
-                  : {}
-              }
+              className="playlist__song-info media__left"
+              style={{ width: "80%" }}
             >
-              <div className="playlist__song-info media__left" style={{width: "100%"}}>
-                <div
-                  className="playlist__song-thumb media__thumb mr-10"
-                  style={{
-                    background: `url('${song?.thumbnail}') no-repeat center center / cover`,
-                  }}
-                  onClick={() => handlePlay(song)}
-                >
-                  {isPlaying && song.encodeId === enCodeIDSong ? (
-                    <div className="thumb--animate">
-                      <div
-                        className="thumb--animate-img"
-                        style={
-                          isLoading
-                            ? {
-                                background: `url('/assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
-                              }
-                            : {
-                                background: `url('/assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
-                              }
-                        }
-                      ></div>
-                    </div>
-                  ) : (
+              <div
+                className="playlist__song-thumb media__thumb mr-10"
+                style={{
+                  background: `url('${listSong?.thumbnail}') no-repeat center center / cover`,
+                }}
+                onClick={() => handlePlay(listSong)}
+              >
+                {isPlaying && listSong.encodeId === enCodeIDSong ? (
+                  <div className="thumb--animate">
                     <div
-                      className="play-song--actions"
+                      className="thumb--animate-img"
                       style={
-                        song.encodeId === enCodeIDSong
-                          ? { display: "block" }
-                          : {}
+                        isLoading
+                          ? {
+                              background: `url('/assets/img/SongActiveAnimation/icon-playing.gif') no-repeat 50% / contain`,
+                            }
+                          : {
+                              background: `url('/assets/img/SongActiveAnimation/loadingImg.gif') no-repeat 50% / contain`,
+                            }
                       }
-                    >
-                      <div className="control-btn btn-toggle-play">
-                        <i className="bi bi-play-fill"></i>
-                      </div>
+                    ></div>
+                  </div>
+                ) : (
+                  <div
+                    className="play-song--actions"
+                    style={
+                      listSong.encodeId === enCodeIDSong
+                        ? { display: "block" }
+                        : {}
+                    }
+                  >
+                    <div className="control-btn btn-toggle-play">
+                      <i className="bi bi-play-fill"></i>
                     </div>
-                  )}
-                </div>
-                <div className="playlist__song-body media__info">
-                  <span className="playlist__song-title info__title" >
-                    {song?.title}
-                  </span>
-                  <p className="playlist__song-author info__author">
-                    {song?.artists?.map((artist, index) => (
-                      <React.Fragment key={artist.id}>
-                        <NavLink
-                          to={"/artist/name=" + artist.alias}
-                          className="is-ghost"
-                          onClick={() => {
-                            dispatch(setArtistAlias(artist.alias));
-                            setHistoryPage({
-                              alias: artist.alias,
-                              page: "artist",
-                            });
-                          }}
-                        >
-                          {artist.name}
-                        </NavLink>
-                        {index < song?.artists.length - 1 && ", "}
-                      </React.Fragment>
-                    ))}
-                  </p>
-                </div>
+                  </div>
+                )}
               </div>
-              {/* <div className={clsx("playlist__song-option", "media__right")}>
-                <MicroButton />
-                {favoriteSongs.map((favoriteSong, index) => {
-                  let renderContent = "";
-                  if (favoriteSong.encodeId === song.encodeId) {
-                    isFavoriteSong = true;
+              <div className="playlist__song-body media__info">
+                <span className="playlist__song-title info__title">
+                  {listSong?.title}
+                </span>
+                <p className="playlist__song-author info__author">
+                  {listSong?.artists?.map((artist, index) => (
+                    <React.Fragment key={artist.id}>
+                      <NavLink
+                        to={"/artist/name=" + artist.alias}
+                        className="is-ghost"
+                        onClick={() => {
+                          dispatch(setArtistAlias(artist.alias));
+                          setHistoryPage({
+                            alias: artist.alias,
+                            page: "artist",
+                          });
+                        }}
+                      >
+                        {artist.name}
+                      </NavLink>
+                      {index < listSong?.artists.length - 1 && ", "}
+                    </React.Fragment>
+                  ))}
+                </p>
+              </div>
+            </div>
+            <div className={clsx("playlist__song-option", "media__right")}>
+              {favoriteSongs.map((favoriteSong, index) => {
+                let renderContent = "";
+                if (favoriteSong.encodeId === listSong.encodeId) {
+                  isFavoriteSong = true;
+                  renderContent = (
+                    <HeartButton
+                      key={favoriteSong.encodeId}
+                      primary
+                      hideOnMobile
+                      optionalClass="option-btn"
+                      songInfo={listSong}
+                    />
+                  );
+                }
+                if (index === favoriteSongs.length - 1) {
+                  if (isFavoriteSong) {
+                    isFavoriteSong = false;
+                  } else {
                     renderContent = (
                       <HeartButton
                         key={favoriteSong.encodeId}
-                        primary
                         hideOnMobile
                         optionalClass="option-btn"
-                        songInfo={song}
+                        songInfo={listSong}
                       />
                     );
                   }
-                  if (index === favoriteSongs.length - 1) {
-                    if (isFavoriteSong) {
-                      isFavoriteSong = false;
-                    } else {
-                      renderContent = (
-                        <HeartButton
-                          key={favoriteSong.encodeId}
-                          hideOnMobile
-                          optionalClass="option-btn"
-                          songInfo={song}
-                        />
-                      );
-                    }
-                  }
-                  return renderContent;
-                })}
-                <div className={clsx("option-btn")}>
-                  <i className="btn--icon bi bi-three-dots"></i>
-                </div>
-              </div> */}
+                }
+                return renderContent;
+              })}
             </div>
-          ))}
+          </div>
+          <div className="next-song">Tiếp Theo</div>
+          <div className="playlist__list">
+            {songCurrentList.map((song, index) => (
+              <>
+                {song.encodeId !== enCodeIDSong && (
+                  <div
+                    className={clsx("playlist__list-song media")}
+                    data-index="0"
+                    //ref={songRef}
+                    //onClick={handleClickSong}
+                    style={
+                      song.encodeId === enCodeIDSong
+                        ? { background: "var(--bg-content-color)" }
+                        : {}
+                    }
+                  >
+                    <div
+                      className="playlist__song-info media__left"
+                      style={{ width: "80%" }}
+                    >
+                      <div
+                        className="playlist__song-thumb media__thumb mr-10"
+                        style={{
+                          background: `url('${song?.thumbnail}') no-repeat center center / cover`,
+                        }}
+                        onClick={() => handlePlay(song, index)}
+                      >
+                        <div
+                          className="play-song--actions"
+                          style={
+                            song.encodeId === enCodeIDSong
+                              ? { display: "block" }
+                              : {}
+                          }
+                        >
+                          <div className="control-btn btn-toggle-play">
+                            <i className="bi bi-play-fill"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="playlist__song-body media__info">
+                        <span className="playlist__song-title info__title">
+                          {song?.title}
+                        </span>
+                        <p className="playlist__song-author info__author">
+                          {song?.artists?.map((artist, index) => (
+                            <React.Fragment key={artist.id}>
+                              <NavLink
+                                to={"/artist/name=" + artist.alias}
+                                className="is-ghost"
+                                onClick={() => {
+                                  dispatch(setArtistAlias(artist.alias));
+                                  setHistoryPage({
+                                    alias: artist.alias,
+                                    page: "artist",
+                                  });
+                                }}
+                              >
+                                {artist.name}
+                              </NavLink>
+                              {index < song?.artists.length - 1 && ", "}
+                            </React.Fragment>
+                          ))}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      className={clsx("playlist__song-option", "media__right")}
+                    >
+                      {favoriteSongs.map((favoriteSong, index) => {
+                        let renderContent = "";
+                        if (favoriteSong.encodeId === song.encodeId) {
+                          isFavoriteSong = true;
+                          renderContent = (
+                            <HeartButton
+                              key={favoriteSong.encodeId}
+                              primary
+                              hideOnMobile
+                              optionalClass="option-btn"
+                              songInfo={song}
+                            />
+                          );
+                        }
+                        if (index === favoriteSongs.length - 1) {
+                          if (isFavoriteSong) {
+                            isFavoriteSong = false;
+                          } else {
+                            renderContent = (
+                              <HeartButton
+                                key={favoriteSong.encodeId}
+                                hideOnMobile
+                                optionalClass="option-btn"
+                                songInfo={song}
+                              />
+                            );
+                          }
+                        }
+                        return renderContent;
+                      })}
+                    </div>
+                  </div>
+                )}
+              </>
+            ))}
+          </div>
         </div>
       </div>
     </div>

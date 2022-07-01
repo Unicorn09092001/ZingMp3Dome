@@ -75,7 +75,7 @@ function ProgressControl(props) {
         ></div>
       </div>
       <span className="durationtime">
-        {formatAudioTime(playSongCurrentInfo.duration)}
+        {formatAudioTime(playSongCurrentInfo?.duration)}
       </span>
     </div>
   );

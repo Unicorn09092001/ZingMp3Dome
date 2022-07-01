@@ -22,8 +22,11 @@ import {
   getHistoryPage
 } from "app/services";
 import { setIsLoadingTab } from "Slice/isLoadingTabSlice";
-import { setPlaylistCurrent } from "Slice/playlistCurrentSlice";
+import { setPlaylistCurrent, setPlaylistData } from "Slice/playlistCurrentSlice";
 import { setArtistAlias } from "Slice/artistPageDataSlice";
+import { getPlaylistById } from "app/services";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +43,15 @@ function App() {
     getFavoriteAlbums().then((res) => {
       dispatch(setPersonalAlbum(res.data));
     });
+    getHistoryPage().then(({data}) => {
+      dispatch(setPlaylistCurrent(data.encodeId));
+      dispatch(setArtistAlias(data.alias));
+      //dispatch(setIsLoadingTab(true));
+      // getPlaylistById(data.encodeId).then((res) => {
+      //   dispatch(setPlaylistData(res.data.data));
+      //   dispatch(setIsLoadingTab(false));
+      // });
+    })
   }, []);
 
   useEffect(() => {
@@ -57,16 +69,16 @@ function App() {
     });
   }, []);
 
-  window.onload = () => {
-    getHistoryPage().then((history) => {
-      if(history.data.page === "playlist") {
-        dispatch(setIsLoadingTab(true));
-        dispatch(setPlaylistCurrent(history.data.encodeId));
-      } else if (history.data.page === "artist") {
-        dispatch(setArtistAlias(history.data.alias));
-      }
-    })
-  }
+  // window.onload = () => {
+  //   getHistoryPage().then((history) => {
+  //     if(history.data.page === "playlist") {
+  //       dispatch(setIsLoadingTab(true));
+  //       dispatch(setPlaylistCurrent(history.data.encodeId));
+  //     } else if (history.data.page === "artist") {
+  //       dispatch(setArtistAlias(history.data.alias));
+  //     }
+  //   })
+  // }
 
   return (
     <GlobalStyles>

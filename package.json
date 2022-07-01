@@ -21,6 +21,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "react-toastify": "^9.0.5",
     "requirejs": "^2.3.6",
     "sass": "^1.45.0",
     "surge": "^0.23.0",
@@ -59,11 +60,8 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Unicorn09092001/ZingMp3Dome.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/Unicorn09092001/ZingMp3Dome.git",
+  "author": "Unicorn09092001 <rongdat2001@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Unicorn09092001/ZingMp3Dome/issues"

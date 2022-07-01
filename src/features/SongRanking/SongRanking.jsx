@@ -7,6 +7,7 @@ import "./SongRanking.scss";
 function SongRanking() {
   const [showFull, setShowFull] = useState(false);
   const { listSong } = useSelector((state) => state.songRanking);
+  
   const [renderList, setRenderList] = useState(() =>
     listSong.filter((x, index) => index < 10)
   );

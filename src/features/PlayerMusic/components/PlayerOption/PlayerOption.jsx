@@ -24,6 +24,8 @@ function PlayerControl() {
     dispatch(changeVolume(volumeValue));
   };
 
+
+
   return (
     <div className="player__options hide-on-mobile">
       <div className="player__options-container">
