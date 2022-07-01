@@ -1,27 +1,26 @@
 {
   "files": {
-    "main.css": "./static/css/main.edb30a2c.chunk.css",
-    "main.js": "./static/js/main.501ad3a4.chunk.js",
-    "main.js.map": "./static/js/main.501ad3a4.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.afc8627d.js",
-    "runtime-main.js.map": "./static/js/runtime-main.afc8627d.js.map",
-    "static/css/2.1afa56ff.chunk.css": "./static/css/2.1afa56ff.chunk.css",
-    "static/js/2.938fadd0.chunk.js": "./static/js/2.938fadd0.chunk.js",
-    "static/js/2.938fadd0.chunk.js.map": "./static/js/2.938fadd0.chunk.js.map",
-    "static/js/3.c47a4221.chunk.js": "./static/js/3.c47a4221.chunk.js",
-    "static/js/3.c47a4221.chunk.js.map": "./static/js/3.c47a4221.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/2.1afa56ff.chunk.css.map": "./static/css/2.1afa56ff.chunk.css.map",
-    "static/css/main.edb30a2c.chunk.css.map": "./static/css/main.edb30a2c.chunk.css.map",
-    "static/js/2.938fadd0.chunk.js.LICENSE.txt": "./static/js/2.938fadd0.chunk.js.LICENSE.txt",
-    "static/media/bootstrap-icons.css": "./static/media/bootstrap-icons.38c4d249.woff",
-    "static/media/loadingImg.42aaa181.gif": "./static/media/loadingImg.42aaa181.gif"
+    "main.css": "/ZingMp3Dome/static/css/main.9469ca81.chunk.css",
+    "main.js": "/ZingMp3Dome/static/js/main.99c0a2f6.chunk.js",
+    "main.js.map": "/ZingMp3Dome/static/js/main.99c0a2f6.chunk.js.map",
+    "runtime-main.js": "/ZingMp3Dome/static/js/runtime-main.f843a16b.js",
+    "runtime-main.js.map": "/ZingMp3Dome/static/js/runtime-main.f843a16b.js.map",
+    "static/css/2.4bed8046.chunk.css": "/ZingMp3Dome/static/css/2.4bed8046.chunk.css",
+    "static/js/2.fd522af8.chunk.js": "/ZingMp3Dome/static/js/2.fd522af8.chunk.js",
+    "static/js/2.fd522af8.chunk.js.map": "/ZingMp3Dome/static/js/2.fd522af8.chunk.js.map",
+    "static/js/3.810c0fbc.chunk.js": "/ZingMp3Dome/static/js/3.810c0fbc.chunk.js",
+    "static/js/3.810c0fbc.chunk.js.map": "/ZingMp3Dome/static/js/3.810c0fbc.chunk.js.map",
+    "index.html": "/ZingMp3Dome/index.html",
+    "static/css/2.4bed8046.chunk.css.map": "/ZingMp3Dome/static/css/2.4bed8046.chunk.css.map",
+    "static/css/main.9469ca81.chunk.css.map": "/ZingMp3Dome/static/css/main.9469ca81.chunk.css.map",
+    "static/js/2.fd522af8.chunk.js.LICENSE.txt": "/ZingMp3Dome/static/js/2.fd522af8.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/ZingMp3Dome/static/media/bootstrap-icons.38c4d249.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.afc8627d.js",
-    "static/css/2.1afa56ff.chunk.css",
-    "static/js/2.938fadd0.chunk.js",
-    "static/css/main.edb30a2c.chunk.css",
-    "static/js/main.501ad3a4.chunk.js"
+    "static/js/runtime-main.f843a16b.js",
+    "static/css/2.4bed8046.chunk.css",
+    "static/js/2.fd522af8.chunk.js",
+    "static/css/main.9469ca81.chunk.css",
+    "static/js/main.99c0a2f6.chunk.js"
   ]
 }
